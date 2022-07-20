@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 import numpy as np
 import pandas as pd
-from rank_variants import RankVariants
+from .rank_variants import RankVariants
 
 class MeasurementsManager(ABC):
     def __init__(self):
