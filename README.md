@@ -1,3 +1,3 @@
 # AlgorithmRanking
 
-**Usage**: Refer the ```.ipynb``` files in [Examples](/examples)
+**Usage**: Refer the ```.ipynb``` files [here](/examples/simulated)
