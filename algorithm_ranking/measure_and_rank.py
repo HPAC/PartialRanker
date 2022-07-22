@@ -10,10 +10,13 @@ class MeasurementsManager(ABC):
 
     @abstractmethod
     def measure(self, rep_steps, run_id):
+        #runner.generate measurement script
+        #runner.measure_variants
         pass
 
     @abstractmethod
     def get_alg_measurements(self):
+        #case_duration_manager.get_measurements
         pass
 
 def measure_and_rank(measurements_manager, h0, rep_steps=3, eps=0.001, max_rep=50):
