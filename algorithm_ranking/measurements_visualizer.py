@@ -3,9 +3,11 @@ from matplotlib import gridspec
 from matplotlib.ticker import FormatStrFormatter
 
 class MeasurementsVisualizer:
-    def __init__(self, alg_measurements, alg_seq_h0):
+    def __init__(self, alg_measurements, alg_seq_h0=None):
         self.measurements = alg_measurements
         self.alg_seq_h0 = alg_seq_h0
+        if not alg_seq_h0:
+            self.alg_seq_h0 = list(self.measurements.keys())
 
     def show_measurement_histograms(self, alg_list=None, bins=10, hspace=0.5):
         if not alg_list:
