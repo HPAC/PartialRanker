@@ -16,9 +16,6 @@ Clone this directory and execute the following command inside the directory
 ```bash
 pip install .
 ```
-### Usage
-
-Refer the ```.ipynb``` files [here](/examples/simulated)
 
 ## 2) Use Docker
 
@@ -45,3 +42,7 @@ Run Jupyter notebook (inside the container).
 ```bash
 jupyter-notebook --ip=0.0.0.0 --allow-root
 ```
+
+## Usage
+
+Refer the ```.ipynb``` files [here](/examples/simulated)
