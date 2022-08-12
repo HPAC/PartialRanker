@@ -133,7 +133,7 @@ class MeasurementsVisualizer:
             sp = ax.plot(data, np.ones(len(data)) * i, 'b.', alpha=0.9)
             ax.set_xlim(x_lim)
 
-        colors = ['#E9EFF5'] * len(y)
+        colors = [(0.0, 0.0, 1.0, 0.05)] * len(y)
         edge_color = '#9FBCF5'
 
         for patch, color in zip(bp['boxes'], colors):
@@ -165,8 +165,10 @@ class MeasurementsVisualizer:
         # ticks
         ax.get_xaxis().tick_bottom()
         ax.get_yaxis().tick_left()
+        ax.set_xlabel('time (s)')
 
         plt.show()
+        return fig
 
 
 
