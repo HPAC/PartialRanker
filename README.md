@@ -40,7 +40,7 @@ Map the ports for jupyter noteboon and the current working directory to the cont
 ```
 The jupyter notebook runs on port 8005
 
-Run Jupyter notebook
+Run Jupyter notebook (inside the container). 
 
 ```bash
 jupyter-notebook --ip=0.0.0.0 --allow-root
