@@ -2,10 +2,11 @@ from .measure_and_rank import MeasurementsManager
 import numpy as np
 
 class MeasurementsSimulator(MeasurementsManager):
-    def __init__(self, config, distribution='normal'):
+    def __init__(self, config, distribution='normal',seed=0):
         super().__init__()
         self.distribution = distribution
         self.config = config
+        np.random.seed(seed)
 
     def normal(self, mean, std):
         return np.random.normal(mean, std)

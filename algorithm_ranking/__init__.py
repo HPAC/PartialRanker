@@ -3,3 +3,7 @@ from .measurements_visualizer import MeasurementsVisualizer
 from .measure_and_rank import MeasurementsManager
 from .measure_and_rank import measure_and_rank
 from .measurements_simulator import MeasurementsSimulator
+from .compare_algs import CompareAlgs
+from .sort1 import RankVariantsSort1
+from .sort2 import RankVariantsSort2
+from .sort3 import RankVariantsSort3

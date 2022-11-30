@@ -1,7 +1,11 @@
 from abc import ABC, abstractmethod
+from ast import Raise
 import numpy as np
 import pandas as pd
 from .rank_variants import RankVariants
+from .sort1 import RankVariantsSort1
+from .sort2 import RankVariantsSort2
+from .sort3 import RankVariantsSort3
 
 class MeasurementsManager(ABC):
     def __init__(self):
@@ -19,7 +23,7 @@ class MeasurementsManager(ABC):
         #case_duration_manager.get_measurements
         pass
 
-def measure_and_rank(measurements_manager, h0, rep_steps=3, eps=0.001, max_rep=50):
+def measure_and_rank(measurements_manager, h0, rep_steps=3, eps=0.001, max_rep=50, method="sort2"):
 
     initial_ranks = []
     for i, j in enumerate(h0):
@@ -35,7 +39,16 @@ def measure_and_rank(measurements_manager, h0, rep_steps=3, eps=0.001, max_rep=5
         measurements_manager.measure(run_id=run_id, rep_steps=rep_steps)
         alg_measurements = measurements_manager.get_alg_measurements()
 
-        rank_variants = RankVariants(alg_measurements, h0)
+        if method == "sort1":
+            rank_variants = RankVariantsSort1(alg_measurements, h0)
+        elif method == "sort2":
+            rank_variants = RankVariantsSort2(alg_measurements, h0)
+        elif method == "sort3":
+            rank_variants = RankVariantsSort3(alg_measurements, h0)
+        else:
+            raise Exception("Method not found")
+        
+
         s, mr = rank_variants.calculate_mean_rank()
 
         mean_rank_log.append(mr.set_index('case:concept:name'))

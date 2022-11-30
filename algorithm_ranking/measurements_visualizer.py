@@ -57,15 +57,10 @@ class MeasurementsVisualizer:
         # # Creating axes instance
         bp = ax.boxplot(x, patch_artist=True,
                         notch=False, vert=0, showfliers=outliers,
-                        positions=range(len(y)))
+                        positions=range(len(y)),zorder=0)
 
         x_lim = ax.get_xlim()
 
-        try:
-            sp = ax.plot(x, y, 'b.', alpha=0.9)
-            ax.set_xlim(x_lim)
-        except:
-            pass
 
         colors = ['#E1E8E8'] * len(y)
 
@@ -91,6 +86,12 @@ class MeasurementsVisualizer:
             median.set(color='red',
                        linewidth=2)
 
+        try:
+            sp = ax.plot(x, y, 'b.', alpha=0.9,zorder=10)
+            ax.set_xlim(x_lim)
+        except:
+            pass
+
         # y-axis labels
         ax.set_yticklabels(y)
 
@@ -99,7 +100,8 @@ class MeasurementsVisualizer:
         ax.get_xaxis().tick_bottom()
         ax.get_yaxis().tick_left()
 
-        plt.show()
+        #plt.show()
+        return fig
 
     def show_measurements_violinplot(self, alg_list=None, outliers=False, scale=1.5):
         if not alg_list:
@@ -159,7 +161,8 @@ class MeasurementsVisualizer:
             median.set(color='red',
                        linewidth=2)
 
-        ax.set_yticks(range(len(y)), labels=y)
+        #ax.set_yticks(range(len(y)), labels=y)
+        ax.set_yticklabels(y)
 
         # Removing top axes and right axes
         # ticks
@@ -167,7 +170,7 @@ class MeasurementsVisualizer:
         ax.get_yaxis().tick_left()
         ax.set_xlabel('time (s)')
 
-        plt.show()
+        #plt.show()
         return fig
 
 
