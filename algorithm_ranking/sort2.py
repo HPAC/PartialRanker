@@ -6,6 +6,19 @@ class RankVariantsSort2(RankVariants):
     def __init__(self, alg_measurements, alg_seq_h0):
         super().__init__(alg_measurements, alg_seq_h0)
         
+    def sort_h0_by_iqr(self):
+        algs = []
+        iqrs = []
+        for k,v in self.measurements.items():
+            algs.append(k)
+            q75,q25 = np.percentile(v,[75,25])
+            iqrs.append(q75-q25)
+        df = pd.DataFrame({"algs":algs,"iqr":iqrs})
+        df = df.sort_values(by=['iqr'],ascending=False)
+        self.alg_seq_h0 = df['algs'].tolist()
+        return df
+
+    
     def rank_variants(self,q_max=75, q_min=25, debug=False):
         self.compare_algs.init_comparision_matrix()
 

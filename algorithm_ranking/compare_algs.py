@@ -5,9 +5,11 @@ class CompareAlgs:
         self.measurements = measurements
         self.h0 = h0
         self.comparision_matrix = {}
+        self.num_comparisons = 0
         self.init_comparision_matrix()
 
     def init_comparision_matrix(self):
+        self.num_comparisons = 0
         self.comparision_matrix = {}
         for alg in self.h0:
             self.comparision_matrix[alg] = {}
@@ -36,6 +38,7 @@ class CompareAlgs:
 
         t_alg1 = self.get_measurements(alg1)
         t_alg2 = self.get_measurements(alg2)
+        self.num_comparisons = self.num_comparisons + 1
 
         q1_max, q1_min = self.get_quartiles(t_alg1, q_max, q_min)
         q2_max, q2_min = self.get_quartiles(t_alg2, q_max, q_min)
