@@ -38,7 +38,10 @@ class Node:
         max_depth = 0
         if self.in_nodes:
             for n in self.in_nodes:
-                depths.append(n.get_depth_n_collect_redun()+1)
+                if n.depth == -1:
+                    depths.append(n.get_depth_n_collect_redun()+1)
+                else:
+                    depths.append(n.depth+1)
                 nodes.append(n.name)
             max_depth = max(depths)
             idxs = np.where(np.array(depths) != max_depth)[0]
@@ -122,6 +125,7 @@ class Graph:
         self.reset_node_depths()
         self.graph_depth = 0
         for alg,node in self.nodes.items():
+            #print("For node {}".format(alg))
             if node.depth == -1:
                 self.node_depth[alg] = node.get_depth_n_collect_redun()
             else:

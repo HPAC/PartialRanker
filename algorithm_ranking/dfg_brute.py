@@ -18,11 +18,11 @@ class RankVariantsDFGBrute(RankVariants):
             
             
         
-    def rank_variants(self, q_max=75, q_min=25, debug = False, redo_comparisons = True):
+    def rank_variants(self, q_max=75, q_min=25, debug = False):
         
-        if redo_comparisons:
-            self.init_graph(debug)
-            self.compare_algs.init_comparision_matrix()
+        
+        self.init_graph(debug)
+        self.compare_algs.init_comparision_matrix(q_max, q_min)
         
         N = len(self.alg_seq_h0)
         for i in range(N):
@@ -38,7 +38,7 @@ class RankVariantsDFGBrute(RankVariants):
                 if debug:
                     print("comparing {} and {}".format(alg_i, alg_j))
                     
-                ret = self.compare_algs.compare(alg_i, alg_j, q_max, q_min)
+                ret = self.compare_algs.compare(alg_i, alg_j)
                 
                 if ret == 0:
                     self.graph.add_edge(alg_i, alg_j)

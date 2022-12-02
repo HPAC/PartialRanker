@@ -20,11 +20,11 @@ class RankVariantsDFGTr(RankVariants):
             
             
         
-    def rank_variants(self, q_max=75, q_min=25, debug = False, redo_comparisons = True):
+    def rank_variants(self, q_max=75, q_min=25, debug = False):
         
-        if redo_comparisons:
-            self.init_graph(debug)
-            self.compare_algs.init_comparision_matrix()
+        
+        self.init_graph(debug)
+        self.compare_algs.init_comparision_matrix(q_max,q_min)
         
         N = len(self.alg_seq_h0)
         for i in range(N):
@@ -40,7 +40,7 @@ class RankVariantsDFGTr(RankVariants):
                 if debug:
                     print("comparing {} and {}".format(alg_i, alg_j))
                     
-                ret = self.compare_algs.compare(alg_i, alg_j, q_max, q_min)
+                ret = self.compare_algs.compare(alg_i, alg_j)
                 
                 if ret == 0:
                     self.graph.add_edge(alg_i, alg_j)
@@ -49,7 +49,7 @@ class RankVariantsDFGTr(RankVariants):
                     self.graph.add_edge(alg_j, alg_i)
                     self.algs_ft[alg_i] = self.algs_ft[alg_i] + [alg_j] + self.algs_ft[alg_j]
                         
-            
+        #print("computed ranks")
         return self.get_ranks_from_graph(q_max,q_min)
         
     def deduce_transitivity(self, alg_i, alg_j):
@@ -63,7 +63,10 @@ class RankVariantsDFGTr(RankVariants):
 
     def get_ranks_from_graph(self,q_max,q_min):
         
-        self.graph.transitivity_reduction()
+        #print("starting transitivity reduction ..")
+        #self.graph.transitivity_reduction()
+        self.graph.calculate_node_depth()
+        #print("finished transitivity reduction ..")
         
         algs_sorted = []
         alg_ranks = []

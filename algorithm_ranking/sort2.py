@@ -20,7 +20,7 @@ class RankVariantsSort2(RankVariants):
 
     
     def rank_variants(self,q_max=75, q_min=25, debug=False):
-        self.compare_algs.init_comparision_matrix()
+        self.compare_algs.init_comparision_matrix(q_max,q_min)
 
         p = len(self.alg_seq_h0)
 
@@ -38,7 +38,7 @@ class RankVariantsSort2(RankVariants):
         for i in range(p):
             for j in range(0, p - i - 1):
                 
-                ret = self.compare_algs.compare(algs_sorted[j], algs_sorted[j + 1], q_max, q_min)
+                ret = self.compare_algs.compare(algs_sorted[j], algs_sorted[j + 1])
 
                 # if alg j+1 is faster than alg j
                 if ret == 2:

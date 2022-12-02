@@ -11,6 +11,9 @@ class RankVariants(ABC):
         self.compare_algs = CompareAlgs(alg_measurements,alg_seq_h0)
 
     
+    def set_h0(self, alg_seq_h0):
+        self.alg_seq_h0 = alg_seq_h0
+
     @abstractmethod
     def rank_variants(self,q_max=75, q_min=25):
         pass
