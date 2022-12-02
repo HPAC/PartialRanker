@@ -1,4 +1,3 @@
-from abc import ABC, abstractmethod
 from ast import Raise
 import numpy as np
 import pandas as pd
@@ -6,22 +5,6 @@ from .rank_variants import RankVariants
 from .sort1 import RankVariantsSort1
 from .sort2 import RankVariantsSort2
 from .sort3 import RankVariantsSort3
-
-class MeasurementsManager(ABC):
-    def __init__(self):
-        self.alg_measurements = {}
-        super().__init__()
-
-    @abstractmethod
-    def measure(self, rep_steps, run_id):
-        #runner.generate measurement script
-        #runner.measure_variants
-        pass
-
-    @abstractmethod
-    def get_alg_measurements(self):
-        #case_duration_manager.get_measurements
-        pass
 
 def measure_and_rank(measurements_manager, h0, rep_steps=3, eps=0.001, max_rep=50, method="sort2"):
 

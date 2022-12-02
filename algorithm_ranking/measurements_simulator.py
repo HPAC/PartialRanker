@@ -1,4 +1,4 @@
-from .measure_and_rank import MeasurementsManager
+from .measurement_manager import MeasurementsManager
 import numpy as np
 
 class MeasurementsSimulator(MeasurementsManager):

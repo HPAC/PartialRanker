@@ -1,6 +1,6 @@
 from .rank_variants import RankVariants
 from .measurements_visualizer import MeasurementsVisualizer
-from .measure_and_rank import MeasurementsManager
+from .measurement_manager import MeasurementsManager
 from .measure_and_rank import measure_and_rank
 from .measurements_simulator import MeasurementsSimulator
 from .compare_algs import CompareAlgs

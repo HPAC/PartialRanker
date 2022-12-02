@@ -9,7 +9,7 @@ class RankVariantsSort2(RankVariants):
     def sort_h0_by_iqr(self):
         algs = []
         iqrs = []
-        for k,v in self.measurements.items():
+        for k,v in self.compare_algs.measurements.items():
             algs.append(k)
             q75,q25 = np.percentile(v,[75,25])
             iqrs.append(q75-q25)
