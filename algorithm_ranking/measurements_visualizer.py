@@ -40,7 +40,7 @@ class MeasurementsVisualizer:
         plt.subplots_adjust(hspace=hspace)
         plt.show()
 
-    def show_measurements_boxplots(self, alg_list=None, outliers=False, scale=1.5):
+    def show_measurements_boxplots(self, alg_list=None, outliers=False, scale=1.5, tick_size=12):
         if not alg_list:
             alg_list = self.alg_seq_h0
         # alg_list.sort()
@@ -99,6 +99,9 @@ class MeasurementsVisualizer:
         # ticks
         ax.get_xaxis().tick_bottom()
         ax.get_yaxis().tick_left()
+        ax.xaxis.set_tick_params(labelsize=tick_size)
+        ax.yaxis.set_tick_params(labelsize=tick_size)
+        ax.set_xlabel('time (s)', fontsize = tick_size)
 
         #plt.show()
         return fig
