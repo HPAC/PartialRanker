@@ -77,6 +77,7 @@ class Graph:
         self.node_depth = {}
         self.graph_depth = 0
         self.debug = debug
+        self.is_tr_reduced = False
     
     def add_node(self,node):
         self.nodes[node]  = Node(node)
@@ -137,6 +138,8 @@ class Graph:
         for alg,node in self.nodes.items():
             for in_node in node.redun:
                 self.remove_edge(in_node,node.name)
+
+        self.is_tr_reduced = True
             
     def get_nodes_at_depth(self,depth):
         #self.calculate_node_depth()
@@ -157,3 +160,20 @@ class Graph:
                 else:
                     g.edge(node1, node2)
         return g
+
+    def get_separable_arrangement(self):
+        if not self.is_tr_reduced:
+            self.transitivity_reduction()
+        h0_ = []
+        for rank in range(self.graph_depth + 1):
+            nodes = []
+            num_in_nodes = []
+            num_out_nodes = []
+            for node in self.get_nodes_at_depth(rank):
+                nodes.append(node)
+                num_in_nodes.append(len(self.nodes[node].in_nodes))
+                num_out_nodes.append(len(self.nodes[node].out_nodes))
+            df = pd.DataFrame(list(zip(nodes, num_in_nodes, num_out_nodes)))
+            h0_ = h0_ + list(df.sort_values([1,2],ascending=[True,False])[0])
+        return h0_
+        

@@ -59,3 +59,22 @@ class RankVariants(ABC):
 
         df_mean.sort_values(by=['case:mean-rank'], inplace=True)
         return df_ranks, df_mean
+
+
+    def rank_variants_reliable(self, q_maxs=[75, 70, 65, 60],
+                             q_mins=[25, 30, 35, 40]):
+
+        r, mr = self.calculate_mean_rank(q_maxs=q_maxs, q_mins = q_mins)
+        
+        r_mr = pd.merge(r, mr, on=['case:concept:name'])
+        rels = {}
+        avg_rels = {}
+        for col in r_mr:
+            if 'rank:' in col:
+                rels[col] = -(r_mr[col] - r_mr['case:mean-rank']).abs()
+                avg_rels[col] = rels[col].mean()
+        
+        maxval = max(avg_rels.values())
+        qlims = [k for k, v in avg_rels.items() if v==maxval]
+        
+        return r_mr,qlims,avg_rels,pd.DataFrame.from_dict(rels)
