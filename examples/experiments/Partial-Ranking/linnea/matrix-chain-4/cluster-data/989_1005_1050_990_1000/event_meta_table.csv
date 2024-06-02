@@ -1,0 +1,19 @@
+case:concept:name;concept:name;concept:flops;concept:kernel;concept:operation;timestamp:start
+algorithm0;gemm_2.06e+09;2.06e+09;gemm!('N', 'N', 1.0, ml1, ml2, 0.0, ml4);tmp2 = (B C);2022-12-11 11:38:34.125792
+algorithm0;gemm_1.96e+09;1.96e+09;gemm!('N', 'N', 1.0, ml4, ml3, 0.0, ml5);tmp5 = (tmp2 D);2022-12-11 11:38:35.125792
+algorithm0;gemm_1.99e+09;1.99e+09;gemm!('N', 'N', 1.0, ml0, ml5, 0.0, ml6);tmp6 = (A tmp5);2022-12-11 11:38:36.125792
+algorithm2;gemm_2.08e+09;2.08e+09;gemm!('N', 'N', 1.0, ml2, ml3, 0.0, ml4);tmp3 = (C D);2022-12-11 11:41:54.125792
+algorithm2;gemm_2.08e+09;2.08e+09;gemm!('N', 'N', 1.0, ml1, ml4, 0.0, ml5);tmp5 = (B tmp3);2022-12-11 11:41:55.125792
+algorithm2;gemm_1.99e+09;1.99e+09;gemm!('N', 'N', 1.0, ml0, ml5, 0.0, ml6);tmp6 = (A tmp5);2022-12-11 11:41:56.125792
+algorithm4;gemm_2.08e+09;2.08e+09;gemm!('N', 'N', 1.0, ml2, ml3, 0.0, ml4);tmp3 = (C D);2022-12-11 11:45:14.125792
+algorithm4;gemm_2.09e+09;2.09e+09;gemm!('N', 'N', 1.0, ml0, ml1, 0.0, ml5);tmp1 = (A B);2022-12-11 11:45:15.125792
+algorithm4;gemm_2.11e+09;2.11e+09;gemm!('N', 'N', 1.0, ml5, ml4, 0.0, ml6);tmp6 = (tmp1 tmp3);2022-12-11 11:45:16.125792
+algorithm1;gemm_2.06e+09;2.06e+09;gemm!('N', 'N', 1.0, ml1, ml2, 0.0, ml4);tmp2 = (B C);2022-12-11 11:40:14.125792
+algorithm1;gemm_1.97e+09;1.97e+09;gemm!('N', 'N', 1.0, ml0, ml4, 0.0, ml5);tmp4 = (A tmp2);2022-12-11 11:40:15.125792
+algorithm1;gemm_1.99e+09;1.99e+09;gemm!('N', 'N', 1.0, ml5, ml3, 0.0, ml6);tmp6 = (tmp4 D);2022-12-11 11:40:16.125792
+algorithm5;gemm_2.09e+09;2.09e+09;gemm!('N', 'N', 1.0, ml0, ml1, 0.0, ml4);tmp1 = (A B);2022-12-11 11:46:54.125792
+algorithm5;gemm_2.08e+09;2.08e+09;gemm!('N', 'N', 1.0, ml2, ml3, 0.0, ml5);tmp3 = (C D);2022-12-11 11:46:55.125792
+algorithm5;gemm_2.11e+09;2.11e+09;gemm!('N', 'N', 1.0, ml4, ml5, 0.0, ml6);tmp6 = (tmp1 tmp3);2022-12-11 11:46:56.125792
+algorithm3;gemm_2.09e+09;2.09e+09;gemm!('N', 'N', 1.0, ml0, ml1, 0.0, ml4);tmp1 = (A B);2022-12-11 11:43:34.125792
+algorithm3;gemm_2.09e+09;2.09e+09;gemm!('N', 'N', 1.0, ml4, ml2, 0.0, ml5);tmp4 = (tmp1 C);2022-12-11 11:43:35.125792
+algorithm3;gemm_1.99e+09;1.99e+09;gemm!('N', 'N', 1.0, ml5, ml3, 0.0, ml6);tmp6 = (tmp4 D);2022-12-11 11:43:36.125792

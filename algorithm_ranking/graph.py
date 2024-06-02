@@ -173,7 +173,7 @@ class Graph:
                 nodes.append(node)
                 num_in_nodes.append(len(self.nodes[node].in_nodes))
                 num_out_nodes.append(len(self.nodes[node].out_nodes))
-            df = pd.DataFrame(list(zip(nodes, num_in_nodes, num_out_nodes)))
-            h0_ = h0_ + list(df.sort_values([1,2],ascending=[True,False])[0])
+            df = pd.DataFrame(list(zip(nodes, num_out_nodes, num_in_nodes)))
+            h0_ = h0_ + list(df.sort_values([1,2],ascending=[False,True])[0])
         return h0_
         

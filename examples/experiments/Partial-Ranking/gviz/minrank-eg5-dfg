@@ -1,0 +1,12 @@
+digraph {
+	t0 [color="#f0efed" style=filled]
+	t1 [color="#f0efed" style=filled]
+	t2 [color="#f0efed" style=filled]
+	t3 [color="#f0efed" style=filled]
+	t4 [color="#f0efed" style=filled]
+	t0 -> t3
+	t0 -> t4
+	t1 -> t3
+	t1 -> t4
+	t2 -> t4
+}
