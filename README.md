@@ -1,6 +1,6 @@
-# AlgorithmRanking:
+# Partial Ranker:
 
-A methodology to rank algorithms. In order to run the code, use one of the following methods:
+In order to run the code, use one of the following methods:
 
 ## 1) Manual Installation
 
