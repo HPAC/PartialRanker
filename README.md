@@ -1,4 +1,4 @@
-# AlgorithmRanking
+# AlgorithmRanking:
 
 A methodology to rank algorithms. In order to run the code, use one of the following methods:
 
