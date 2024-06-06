@@ -1,5 +1,7 @@
 # Partial Ranker:
 
+Algorithms for partial ranking.
+
 In order to run the code, use one of the following methods:
 
 ## 1) Manual Installation
