@@ -1,4 +1,8 @@
-# Partial Ranker:
+# Partial Ranker
+
+```{warning}
+ This is code is still under development.
+```
 
 Algorithms for partial ranking.
 
@@ -45,6 +49,3 @@ Run Jupyter notebook (inside the container).
 jupyter-notebook --ip=0.0.0.0 --allow-root
 ```
 
-## Usage
-
-Refer the ```.ipynb``` files [here](/examples/simulated)
