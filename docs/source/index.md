@@ -18,7 +18,8 @@ Officially supported browsers.
 :caption: 'Contents:'
 :maxdepth: 2
 
-Examples <notebooks/index>
+Usage <notebooks-usage/index>
+Applications <notebooks-applications/index>
 API Reference <api/partial_ranker>
 ```
 

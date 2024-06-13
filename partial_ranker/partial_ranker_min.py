@@ -24,6 +24,27 @@ import pandas as pd
 from .graph import Graph
 
 class PartialRankerMin:
+    """Partial ranking methodology (Methodology 3 in the paper). 
+    First, the objects are grouped into mutually exclusive equivalence classes based on the results of pair-wise comparisons.
+    Then, the equivalence classes are ranked according to increasing lower quantiles values of one of the objects each class.
+    All the objects in an equivalence class are ranked equally.
+    The algorithm is implemented in the method ``compute_ranks()``.
+    
+    Input:
+        comparer (partial_ranker.QuantileComparer):
+            The ``QuantileComparer`` object that contains the results of pair-wise comparisons.
+            i.e, ``comparer.compare()`` should have been called.
+        
+    **Attributes and Methods**:
+    
+    Attributes:
+        objs (List[str]): List of object names.
+        
+        equivalence (dict[str,list[str]]): A dictionary with objects as keys, whose value holds the list of objects that are equivalent to the object indicated in the key. 
+        
+            - e.g.; in the dict ``{'obj1': ['obj3', 'obj4], 'obj2': ['obj5'], ...}``, ``obj3`` and ``obj4`` are equivalent to ``obj1``, ``obj5`` is equivalent to ``obj2``, etc.
+
+    """
 
     def __init__(self,comparer):
         self.comparer = comparer
@@ -36,7 +57,10 @@ class PartialRankerMin:
         self._obj_rank = {}
         self._rank_objs = {}
         
-    def compute_ranks(self):
+    def compute_ranks(self) -> None:
+        """Computes the partial ranks of the objects according to Methodology 3.
+        The internal variables that stores the rank of the objects are updated.
+        """
         U = []
         Q = []
         self._visited = set()
@@ -69,27 +93,28 @@ class PartialRankerMin:
                 V = self._equiv_set(v,V)
         return V
     
-    def get_ranks(self):
-        """Returns the partial ranks of the objects.
-        
+    def get_ranks(self) -> dict[int,list[str]]:
+        """
         Returns:
-            dict[int,List[str]]: Dictionary with list of objects at each rank.
+            dict[int,List[str]]: A dictionary consisting of the list of objects at each rank.
+            e.g.; ``{0: ['obj1'], 1: ['obj2', 'obj3'], ...}``.
         """
         return self._rank_objs
     
-    def get_rank_obj(self,obj):
-        """Returns the partial rank of the object.
-        
+    def get_rank_obj(self,obj) -> int:
+        """  
         Args:
             obj (str): Object name.
         
         Returns:
-            int: Partial rank of the object.
+            int: The partial rank of a given object.
         """
         return self._obj_rank[obj]
         
     def get_dfg(self):
-        """Visualizes the dependency graph.
+        """
+        Returns:
+            partial_ranker.Graph: A Graph object that represents the rank relation among the objects according to Methodology 3.
         """
         cm = pd.DataFrame(self.comparer.C)
         dependencies = dict(cm.apply(lambda row: row[row == 0].index.tolist(), axis=1))

@@ -24,14 +24,16 @@ import numpy as np
 
 class QuantileComparer:
     """
-    Given a dictionary of objects consisting of a list of measurement values, this class  
+    Given a dictionary of objects consisting of a list of measurement values, e.g., ``{'obj1': [1.2, 1.3, 1.4], 'obj2': [1.5, 1.6, 1.7,0.9], ...}``, this class  
     provides methods to compare objects pairwise using a quantile-based better than relation, and to store the results 
     of the comparisons in a comparison matrix.
     
+    Input:
+        **measurements (dict[str, List[float]])**: A dictionary of objects consisting of a list of measurement values.
+            
+    **Attributes and Methods**:
+    
     Attributes:
-        measurements (dict[str, list[float]]): (Input) A dictionary of objects consisting of a list of measurement values.
-        
-            - e.g., ``{'obj1': [1.2, 1.3, 1.4], 'obj2': [1.5, 1.6, 1.7,0.9], ...}``. 
             
         C (dict[str, dict[str, int]]): A square matrix of size (N x N), where N is the number of objects.
             This matrix should holds the results of pair-wise comparisons as follows:
@@ -58,14 +60,17 @@ class QuantileComparer:
         self.t_up = {}
         self.t_low = {}
 
-    def compute_quantiles(self, q_max:int, q_min:int, outliers=False):
-        """Initializes the comparison matrix, and for a given quantile range, computes the upper
-        and lower quantile values of the measurements for each object.
+    def compute_quantiles(self, q_max:int, q_min:int, outliers=False) -> None:
+        """For a given quantile range, the upper and lower quantile values of measurements are computed and stored in the **t_up** and **t_low** dictionaries.
+        The elements of the comparison matrix **C** is initialized to -1.
 
         Args:
             q_max (int): Upper quantile. E.g., 75 for 75th percentile.
             q_min (int): Lower quantile. E.g., 25 for 25th percentile.
             outliers (bool, optional): Remove outliers using the 1.5 IQR rule. Defaults to False.
+            
+        Returns:
+            None 
         """
         self.C = {}
         for x in self.objs:
@@ -97,7 +102,10 @@ class QuantileComparer:
             obj2 (str): the key of another object in the measurements dictionary.
 
         Returns:
-            int: 0 if **obj1** is better than **obj2**, 1 if **obj1** is equivalent to **obj2**, 2 if **obj1** is worse than **obj2**. 
+            int: 
+                - If **obj1** is better than **obj2**, returns 0
+                - If **obj1** is equivalent to **obj2**, returns 1
+                - If **obj1** is worse than **obj2**, returns 2 
         """
         
         if self.C[obj1][obj2] != -1:
@@ -125,18 +133,20 @@ class QuantileComparer:
 
         return ret
     
-    def compare(self):
-        """Performs a pair-wise Comparison of all objects in the measurements dictionary and stores the results in **C**. 
+    def compare(self) -> None:
+        """Performs a pair-wise comparison of all objects in the measurements dictionary and stores the results in **C**. 
+        
+        Returns:
+            None
         """
         for i in range(len(self.objs)):
             for j in range(i+1, len(self.objs)):
                 self.better_than_relation(self.objs[i], self.objs[j])
                 
-    def get_comparison_matrix(self):
-        """Returns the comparison matrix **C**.
-
+    def get_comparison_matrix(self) -> dict[str, dict[str, int]]:
+        """
         Returns:
-            dict[str, dict[str, int]]: The comparison matrix.
+            dict[str, dict[str, int]]: The comparison matrix **C**.
         """
         return self.C
         

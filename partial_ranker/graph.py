@@ -21,8 +21,27 @@
 # - Aravind Sankaran
 
 import pandas as pd
+from typing import List
 
 class Graph:
+    """Class to represent the dependencies and ranks of the objects as a transitively reduced directed acyclic graph.
+    
+    Inputs:
+        **deps (dict[str, list[str]])**: Dictionary with nodes as keys and a list of nodes that it depends on as values.
+            
+            - e.g.; if dependency is based on a better-than relation, then in deps that look like ``{'obj1': ['obj2', 'obj3], 'obj2': ['obj4'], ...}``, ``obj2`` and ``obj3`` are better than ``obj1``, ``obj4`` is better than ``obj2``, etc.
+
+        **depths (dict[int,List[str]])**: A dictionary consisting of the list of objects at each rank.
+            
+            - e.g.; in  ``{0: ['obj1'], 1: ['obj2', 'obj3'], ...}``, ``obj1`` is at rank 0, ``obj2`` and ``obj3`` are at rank 1, etc.
+            
+    **Attributes and Methods**:
+    
+    Attributes:
+        in_nodes (dict[str, list[str]]): Dictionary with nodes as keys and a list of nodes that has incoming edges to the node indicated in the key.
+        out_nodes (dict[str, list[str]]): Dictionary with nodes as keys and a list of nodes that has outgoing edges from the node indicated in the key.
+    
+    """
     def __init__(self,dependencies, depths):
         self.deps = dependencies
         self.depths = depths
@@ -41,6 +60,14 @@ class Graph:
             
                     
     def visualize(self,highlight_nodes=[]):
+        """Visualize the dependencies and ranks of the objects as a transitively reduced directed acyclic graph.
+
+        Args:
+            highlight_nodes (list, optional): The nodes in this list are highlighted in the visualization. Defaults to [].
+
+        Returns:
+            graphviz.Digraph: A graphviz object.
+        """
         import graphviz
         
         g = graphviz.Digraph()
@@ -60,9 +87,12 @@ class Graph:
         return g
     
     
-    def get_separable_arrangement(self):
-        
-        h0_ = []
+    def get_separable_arrangement(self) -> List:
+        """
+        Returns:
+            List[str]: Arrangement of the objects according to Methodology 2 (Step 1 to 3) in the paper. 
+        """
+        h0_ = [] # The list h0_ is same as T in the paper. 
         for rank in range(len(self.depths)):
             nodes = []
             num_in_nodes = []

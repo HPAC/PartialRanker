@@ -28,23 +28,23 @@ from typing import List
 
 class MeasurementsVisualizer:
     """
-    Class for visualizing sets of measurements.
-
-    Attributes:
-        measurements (dict): A dictionary containing measurements.
-                            Keys are object IDs (str), and values are lists of measurement values (float).
-        obj_seq (list): A list containing the sequence of object IDs. If not provided, it defaults to a random order.
+    Class for visualizing sets of measurements as box-plots or violin-plots. 
+    The y-axis indicates the object ID and the x-axis indicates the measurement values.
+    
+    Input:
+        **measurements (dict[str, List[float]])**: A dictionary of objects consisting of a list of measurement values.
+        
+            - e.g., ``{'obj1': [1.0, 2.0, 3.0], 'obj2': [4.0, 5.0, 6.0, 9.0], ...}``
+            
+        **obj_seq (List[str], optional)**: 
+            A list of object IDs which represents the order in which the y-axis of the visualization should be arranged. 
+            If not provided, it defaults to a random order.
+    
+    **Methods**:
     """
     
     def __init__(self, measurements:dict, obj_seq:List=None):
-        """
-        Initializes a MeasurementsVisualizer object.
-        
-        Args:
-            measurements (dict): A dictionary containing measurements.
-                                Keys are object IDs (str), and values are lists of measurement values (float).
-            obj_seq (list): A list containing the sequence of object IDs. If not provided, it defaults to a random order.
-        """
+
         self.measurements = measurements
         self.obj_seq = obj_seq
         if not obj_seq:
@@ -52,7 +52,9 @@ class MeasurementsVisualizer:
 
     def remove_outliers(self,x:List[float]) -> List[float]:
         """
-        Remove outliers from a list of measurements.
+        Remove outliers from a list of measurements. To this end, the first and third quartiles (Q1 and Q3) and the interquartile range (IQR) 
+        of the input list of measurements are computed and the outliers are identified as values that fall below Q1 - 1.5 * IQR 
+        or above Q3 + 1.5 * IQR. The method returns a new list containing only the non-outlier measurements.
 
         Args:
             x (List[float]): A list of measurement values.
@@ -60,9 +62,7 @@ class MeasurementsVisualizer:
         Returns:
             List[float]: A list of measurement values with outliers removed.
 
-        This method calculates the first and third quartiles (Q1 and Q3) and the interquartile range (IQR) 
-        of the input list of measurements. Outliers are then identified as values that fall below Q1 - 1.5 * IQR 
-        or above Q3 + 1.5 * IQR. The method returns a new list containing only the non-outlier measurements.
+
         """
         
         x = np.array(x)
@@ -82,6 +82,9 @@ class MeasurementsVisualizer:
             bins (int, optional): bins the measurements values. Defaults to 10.
             
             hspace (float, optional): matplotlib paramater to control the space between the subplots. Defaults to 0.5.
+            
+        Returns:
+            matplotlib.pyplot.figure
         """
         
         if not obj_list:
@@ -115,7 +118,7 @@ class MeasurementsVisualizer:
             tick_size (int, optional): matplotlib param to control the size of the axis labels. Defaults to 12.
 
         Returns:
-            fig: matplotlib figure.
+            matplotlib.pyplot.figure
         """
         if not obj_list:
             obj_list = self.obj_seq
@@ -191,7 +194,7 @@ class MeasurementsVisualizer:
             scale (float, optional): matplotlib param to control the size of the plot. Defaults to 1.5.
 
         Returns:
-            fig: matplotlib figure.
+            matplotlib.pyplot.figure
         """
         if not obj_list:
             obj_list = self.obj_seq
