@@ -16,6 +16,7 @@ setup(
     classifiers=[
         "Programming Language :: Python :: 3",
     ],
-    python_requires=">3",
+    python_requires=">3.6",
+    install_requires=open("requirements.txt").read().splitlines(),
 
 )

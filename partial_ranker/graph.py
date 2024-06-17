@@ -24,7 +24,7 @@ import pandas as pd
 from typing import List
 
 class Graph:
-    """Class to represent the dependencies and ranks of the objects as a transitively reduced directed acyclic graph.
+    """Class to represent the dependencies of the objects as a transitively reduced directed acyclic graph.
     
     Inputs:
         **deps (dict[str, list[str]])**: Dictionary with nodes as keys and a list of nodes that it depends on as values.

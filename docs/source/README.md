@@ -1,6 +1,6 @@
 ### Partial Ranker
 
-Partial Ranker is a library that implements methodologies for ranking a given set of objects with a *strict partial order* relation. For full documentations can be found here (TODO:Add link).
+Partial Ranker is a library that implements methodologies for ranking a given set of objects with a *strict partial order* relation. 
 
 **INPUT**:
 
@@ -24,17 +24,6 @@ The output is an *ordered set partition* of the objects into ranks. For example:
 Rank 0: ['t0', 't1'],
 Rank 1: ['t2']
 ```
-
-#### Installation
-
-Partial Ranker requires Python>=3.6 and can be installed with 
-
-```bash
-pip install git+https://github.com/HPAC/PartialRanker
-```
-#### Examples
-
-For usage and application examples, please follow the jupyter notebooks under the folder ``examples/``.
 
 #### Reference
 

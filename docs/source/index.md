@@ -4,21 +4,16 @@
 % contain the root `toctree` directive.
 
 
-```{include} ../../README.md
+```{include} README.md
 ```
 
-```{seealso}
-Officially supported browsers.
-```
-
-```{warning}
- This is code is still under development.
-```
 ```{toctree}
 :caption: 'Contents:'
 :maxdepth: 2
 
-Usage <notebooks-usage/index>
+Installation <Installation>
+Usage <notebooks-usage/01U_Usage>
+Examples <notebooks-usage/index>
 Applications <notebooks-applications/index>
 API Reference <api/partial_ranker>
 ```

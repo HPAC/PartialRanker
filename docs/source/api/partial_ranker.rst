@@ -52,6 +52,14 @@ partial\_ranker.partial\_ranker\_min module
    :undoc-members:
    :show-inheritance:
 
+partial\_ranker.partial\_ranker\_wrapper module
+-----------------------------------------------
+
+.. automodule:: partial_ranker.partial_ranker_wrapper
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 partial\_ranker.quantile\_comparer module
 -----------------------------------------
 

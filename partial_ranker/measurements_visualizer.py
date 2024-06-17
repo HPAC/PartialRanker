@@ -109,7 +109,8 @@ class MeasurementsVisualizer:
         plt.show()
 
     def show_measurements_boxplots(self, obj_list=None, outliers=False, scale=1.5, tick_size=12):
-        """Displays a graph with a boxplot of measurements for each object in obj_list.
+        """Displays a graph with a boxplot of measurements for each object in obj_list. The box represents the Inter Quartile Interval (IQI), 
+        which is the interval between the 25th and the 75th quantile values, and the red line within the box represents the median value.
 
         Args:
             obj_list (List, optional): The boxplots are shown only for the those objects in the list. The boxplots are arranged according to the order of the objects in the list. Defaults to a random order of all objects.      
