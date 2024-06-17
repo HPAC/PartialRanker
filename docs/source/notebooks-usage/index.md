@@ -1,4 +1,4 @@
-## Examples
+## Methodologies
 
 ```{toctree}
 :maxdepth: 1

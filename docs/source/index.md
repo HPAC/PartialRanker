@@ -13,13 +13,13 @@
 
 Installation <Installation>
 Usage <notebooks-usage/01U_Usage>
-Examples <notebooks-usage/index>
+Methodologies <notebooks-usage/index>
 Applications <notebooks-applications/index>
 API Reference <api/partial_ranker>
 ```
 
-## Indices and tables
+<!-- ## Indices and tables
 
 - {ref}`genindex`
 - {ref}`modindex`
-- {ref}`search`
+- {ref}`search` -->

@@ -11,9 +11,9 @@ sys.path.insert(0, os.path.abspath('../../partial_ranker'))
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'Partial Ranker'
-copyright = '2024, Aravind Sankaran'
+copyright = '2024, HPAC Group, RWTH Aachen and Umeå University'
 author = 'Aravind Sankaran'
-release = '0.2'
+version = '1.0.0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -43,6 +43,11 @@ html_theme = "sphinx_rtd_theme"
 html_theme_options = {
     'collapse_navigation': False,
     'sticky_navigation': False,
+}
+
+html_context = {
+    'display_github': True,
+    'github_url': 'https://github.com/HPAC/PartialRanker/tree/main',
 }
 
 # pip install git+https://github.com/bashtage/sphinx-material.git
