@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Applications in Root Cause Analysis : BPI &mdash; Partial Ranker 0.2 documentation</title>
+  <title>Applications in Root Cause Analysis : BPI &mdash; Partial Ranker  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css" />
@@ -16,7 +16,7 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=10f1778b"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
         <script src="../_static/doctools.js?v=9a2dae69"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -40,6 +40,9 @@
           <a href="../index.html" class="icon icon-home">
             Partial Ranker
           </a>
+              <div class="version">
+                1.0.0
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -57,7 +60,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../notebooks-usage/01U_Usage.html#Partial-Ranking-of-the-Objects">Partial Ranking of the Objects</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../notebooks-usage/index.html">Examples</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks-usage/index.html">Methodologies</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../notebooks-usage/02U_Methodology1.html">PartialRankerDFG</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../notebooks-usage/02U_Methodology1.html#Experiment-1">Experiment 1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../notebooks-usage/02U_Methodology1.html#Experiment-2">Experiment 2</a></li>
@@ -219,9 +222,10 @@
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Applications</a></li>
       <li class="breadcrumb-item active">Applications in Root Cause Analysis : BPI</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/notebooks-applications/07A_RootCause_BPI.ipynb.txt" rel="nofollow"> View page source</a>
-      </li>
+  <li class="wy-breadcrumbs-aside">
+    <a href="https://github.com/HPAC/PartialRanker/tree/main" class="fa fa-github" target="_blank"> Click here for source code</a>
+  </li>
+
   </ul>
   <hr/>
 </div>
@@ -352,11 +356,11 @@ Number of variants: 562
 </pre></div></div>
 </div>
 <p>Each variant is assigned a unique ID. We then identify the variants that were observed in more than 100 cases, and prepare the durations data in the following format:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="err">dura</span><span class="kc">t</span><span class="err">io</span><span class="kc">ns</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="mi">0</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">42032</span><span class="p">,</span><span class="mi">76321</span><span class="p">,</span><span class="err">...</span><span class="p">],</span>
-<span class="w">    </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">65434</span><span class="p">,</span><span class="w"> </span><span class="mi">23432</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">],</span>
-<span class="w">    </span><span class="err">...</span>
-<span class="p">}</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>durations = {
+    0: [42032,76321,...],
+    1: [65434, 23432, ...],
+    ...
+}
 </pre></div>
 </div>
 <p>The data is then visualized.</p>
@@ -639,7 +643,7 @@ gviz
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Aravind Sankaran.</p>
+    <p>&#169; Copyright 2024, HPAC Group, RWTH Aachen and Umeå University.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

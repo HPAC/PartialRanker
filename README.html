@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Partial Ranker &mdash; Partial Ranker 0.2 documentation</title>
+  <title>Partial Ranker &mdash; Partial Ranker  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
 
@@ -15,7 +15,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=10f1778b"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -35,6 +35,9 @@
           <a href="index.html" class="icon icon-home">
             Partial Ranker
           </a>
+              <div class="version">
+                1.0.0
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -52,7 +55,7 @@
 <li class="toctree-l2"><a class="reference internal" href="notebooks-usage/01U_Usage.html#Partial-Ranking-of-the-Objects">Partial Ranking of the Objects</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks-usage/index.html">Examples</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="notebooks-usage/index.html">Methodologies</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="notebooks-usage/02U_Methodology1.html">PartialRankerDFG</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="notebooks-usage/02U_Methodology1.html#Experiment-1">Experiment 1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="notebooks-usage/02U_Methodology1.html#Experiment-2">Experiment 2</a></li>
@@ -213,9 +216,10 @@
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Partial Ranker</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="_sources/README.md.txt" rel="nofollow"> View page source</a>
-      </li>
+  <li class="wy-breadcrumbs-aside">
+    <a href="https://github.com/HPAC/PartialRanker/tree/main" class="fa fa-github" target="_blank"> Click here for source code</a>
+  </li>
+
   </ul>
   <hr/>
 </div>
@@ -224,26 +228,38 @@
              
   <section id="partial-ranker">
 <h1>Partial Ranker<a class="headerlink" href="#partial-ranker" title="Link to this heading"></a></h1>
-<p>Partial Ranker is a library that implements methodologies for ranking a given set of objects with a <em>strict partial order</em> relation.</p>
-<p><strong>INPUT</strong>:</p>
+<p>Partial Ranker is a library that implements methodologies for ranking a given set of objects that have a <em>strict partial order</em> relation. For details on Partial Ranking and its methodologies, refer to <a class="reference external" href="https://arxiv.org/abs/2405.18259">this paper</a>.</p>
+<p><strong>Input</strong>:</p>
 <p>At the moment, we support only vector objects as input. An example for a set of vector objects would be:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="err">objec</span><span class="kc">ts</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="err">&#39;</span><span class="kc">t</span><span class="mi">0</span><span class="err">&#39;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.12</span><span class="p">,</span><span class="w"> </span><span class="mf">0.11</span><span class="p">,</span><span class="w"> </span><span class="mf">0.13</span><span class="w"> </span><span class="p">],</span>
-<span class="w">    </span><span class="err">&#39;</span><span class="kc">t</span><span class="mi">1</span><span class="err">&#39;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.10</span><span class="p">,</span><span class="w"> </span><span class="mf">0.13</span><span class="p">,</span><span class="w"> </span><span class="mf">0.10</span><span class="w"> </span><span class="p">],</span>
-<span class="w">    </span><span class="err">&#39;</span><span class="kc">t</span><span class="mi">2</span><span class="err">&#39;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.32</span><span class="p">,</span><span class="w"> </span><span class="mf">0.31</span><span class="p">,</span><span class="w"> </span><span class="mf">0.38</span><span class="p">,</span><span class="w"> </span><span class="mf">0.32</span><span class="p">,</span><span class="w"> </span><span class="mf">0.37</span><span class="p">,</span><span class="w"> </span><span class="mf">0.32</span><span class="w"> </span><span class="p">],</span>
-<span class="w">    </span><span class="err">...</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">objects</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;t0&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">,</span> <span class="mf">0.11</span><span class="p">,</span> <span class="mf">0.13</span> <span class="p">],</span>
+    <span class="s1">&#39;t1&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.13</span><span class="p">,</span> <span class="mf">0.10</span> <span class="p">],</span>
+    <span class="s1">&#39;t2&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mf">0.32</span><span class="p">,</span> <span class="mf">0.31</span><span class="p">,</span> <span class="mf">0.38</span><span class="p">,</span> <span class="mf">0.32</span><span class="p">,</span> <span class="mf">0.37</span><span class="p">,</span> <span class="mf">0.32</span> <span class="p">],</span>
+    <span class="o">...</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>The <em>better-than relation</em> between a pair of objects with which the partial order is formed is implemented in the library. At the moment, we support better-than relation based on comparisons of the Inter-Quantile-Intervals of the objects.</p>
-<p><strong>OUTPUT</strong>:</p>
+<p><strong>Output</strong>:</p>
 <p>The output is an <em>ordered set partition</em> of the objects into ranks. For example:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="err">Ra</span><span class="kc">n</span><span class="err">k</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">&#39;</span><span class="kc">t</span><span class="mi">0</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="kc">t</span><span class="mi">1</span><span class="err">&#39;</span><span class="p">],</span>
-<span class="err">Ra</span><span class="kc">n</span><span class="err">k</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">&#39;</span><span class="kc">t</span><span class="mi">2</span><span class="err">&#39;</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Rank</span> <span class="mi">0</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;t0&#39;</span><span class="p">,</span> <span class="s1">&#39;t1&#39;</span><span class="p">],</span>
+<span class="n">Rank</span> <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;t2&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<section id="reference">
-<h2>Reference<a class="headerlink" href="#reference" title="Link to this heading"></a></h2>
+</section>
+<section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
+<p>Partial Ranker requires Python&gt;=3.6 and can be installed using the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/HPAC/PartialRanker
+</pre></div>
+</div>
+</section>
+<section id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h1>
+<p>For a hands-on experience, please clone the github repo <code class="docutils literal notranslate"><span class="pre">https://github.com/HPAC/PartialRanker.git</span></code> and follow the jupyter notebooks under the folder <code class="docutils literal notranslate"><span class="pre">examples/</span></code>.</p>
+</section>
+<section id="cite">
+<h1>Cite<a class="headerlink" href="#cite" title="Link to this heading"></a></h1>
 <p>More details on partial ranking, the methodologies and applications can be found in <a class="reference external" href="https://arxiv.org/abs/2405.18259">this paper</a>. If you are using this library, please cite:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@article</span><span class="p">{</span><span class="n">sankaran2024ranking</span><span class="p">,</span>
   <span class="n">title</span><span class="o">=</span><span class="p">{</span><span class="n">Ranking</span> <span class="k">with</span> <span class="n">Ties</span> <span class="n">based</span> <span class="n">on</span> <span class="n">Noisy</span> <span class="n">Performance</span> <span class="n">Data</span><span class="p">},</span>
@@ -254,6 +270,9 @@
 </pre></div>
 </div>
 </section>
+<section id="acknowledgement">
+<h1>Acknowledgement<a class="headerlink" href="#acknowledgement" title="Link to this heading"></a></h1>
+<p>Financial support from the Deutsche Forschungsgemeinschaft (German Research Foundation) through grants GSC 111 and IRTG 2379 is gratefully acknowledged.</p>
 </section>
 
 
@@ -264,7 +283,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Aravind Sankaran.</p>
+    <p>&#169; Copyright 2024, HPAC Group, RWTH Aachen and Umeå University.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

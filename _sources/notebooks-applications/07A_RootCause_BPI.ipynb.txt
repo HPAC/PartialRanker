@@ -183,7 +183,7 @@
    "source": [
     "Each variant is assigned a unique ID. We then identify the variants that were observed in more than 100 cases, and prepare the durations data in the following format:\n",
     "\n",
-    "```json\n",
+    "```\n",
     "durations = {\n",
     "    0: [42032,76321,...],\n",
     "    1: [65434, 23432, ...],\n",

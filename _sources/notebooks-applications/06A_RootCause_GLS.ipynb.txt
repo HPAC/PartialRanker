@@ -278,7 +278,7 @@
    "source": [
     "We consolidate the execution times of the shortlisted algorithms from all the repetitions and prepare the measurement data in the following format:\n",
     "\n",
-    "```json\n",
+    "```\n",
     "measurements = {\n",
     "    'algorithm2': [0.025, 0.024, ..., ],\n",
     "    'algorithm8': [0.023, 0.024, ..., ],\n",

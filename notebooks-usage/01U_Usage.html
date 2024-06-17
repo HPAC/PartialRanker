@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Usage &mdash; Partial Ranker 0.2 documentation</title>
+  <title>Usage &mdash; Partial Ranker  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css" />
@@ -16,7 +16,7 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=10f1778b"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
         <script src="../_static/doctools.js?v=9a2dae69"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -25,7 +25,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Examples" href="index.html" />
+    <link rel="next" title="Methodologies" href="index.html" />
     <link rel="prev" title="Installation" href="../Installation.html" /> 
 </head>
 
@@ -40,6 +40,9 @@
           <a href="../index.html" class="icon icon-home">
             Partial Ranker
           </a>
+              <div class="version">
+                1.0.0
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -57,7 +60,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#Partial-Ranking-of-the-Objects">Partial Ranking of the Objects</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Examples</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Methodologies</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="02U_Methodology1.html">PartialRankerDFG</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="02U_Methodology1.html#Experiment-1">Experiment 1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="02U_Methodology1.html#Experiment-2">Experiment 2</a></li>
@@ -218,9 +221,10 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Usage</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/notebooks-usage/01U_Usage.ipynb.txt" rel="nofollow"> View page source</a>
-      </li>
+  <li class="wy-breadcrumbs-aside">
+    <a href="https://github.com/HPAC/PartialRanker/tree/main" class="fa fa-github" target="_blank"> Click here for source code</a>
+  </li>
+
   </ul>
   <hr/>
 </div>
@@ -229,16 +233,7 @@
              
   <section id="Usage">
 <h1>Usage<a class="headerlink" href="#Usage" title="Link to this heading"></a></h1>
-<p>The required <strong>input</strong> to use this library is a set of objects, each with a set of scalar values, represented as a dictionary. For example:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="err">measureme</span><span class="kc">nts</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="err">&#39;</span><span class="kc">t</span><span class="mi">0</span><span class="err">&#39;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.13</span><span class="p">,</span><span class="w"> </span><span class="mf">0.21</span><span class="p">,</span><span class="w"> </span><span class="mf">0.18</span><span class="p">,</span><span class="w"> </span><span class="mf">0.12</span><span class="w"> </span><span class="p">],</span>
-<span class="w">    </span><span class="err">&#39;</span><span class="kc">t</span><span class="mi">1</span><span class="err">&#39;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.30</span><span class="p">,</span><span class="w"> </span><span class="mf">0.33</span><span class="p">,</span><span class="w"> </span><span class="mf">0.28</span><span class="w"> </span><span class="p">],</span>
-<span class="w">    </span><span class="err">&#39;</span><span class="kc">t</span><span class="mi">1</span><span class="err">&#39;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.32</span><span class="p">,</span><span class="w"> </span><span class="mf">0.31</span><span class="p">,</span><span class="w"> </span><span class="mf">0.38</span><span class="p">,</span><span class="w"> </span><span class="mf">0.32</span><span class="p">,</span><span class="w"> </span><span class="mf">0.37</span><span class="p">,</span><span class="w"> </span><span class="mf">0.32</span><span class="w"> </span><span class="p">],</span>
-<span class="w">    </span><span class="err">...</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>For the purpose of demonstration, we simulate the measurement values by sampling from normal distribution. To this end, the module <code class="docutils literal notranslate"><span class="pre">MeasurementsSimulator</span></code> can be used. In the following example, we create 4 objects with measurements simulated from two normal distributions differing in mean and standard deviation.</p>
+<p>The required <strong>input</strong> to use this library is a set of objects, each with a set of scalar values, represented as a dictionary. For the purpose of demonstration, we simulate the measurement values by sampling from normal distribution. To this end, the module <code class="docutils literal notranslate"><span class="pre">MeasurementsSimulator</span></code> can be used. In the following example, we create 4 objects with measurements simulated from two normal distributions differing in mean and standard deviation.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
@@ -294,7 +289,7 @@ fig = mv.show_measurements_boxplots(scale=0.5)
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks-usage_01U_Usage_5_0.png" src="../_images/notebooks-usage_01U_Usage_5_0.png" />
+<img alt="../_images/notebooks-usage_01U_Usage_4_0.png" src="../_images/notebooks-usage_01U_Usage_4_0.png" />
 </div>
 </div>
 <p>The box represents the Inter Quartlie Interval (IQI), which is the interval between the 25th and the 75th quantile values, and the red line with the box represents the median value.</p>
@@ -477,13 +472,13 @@ Rank 1: {&#39;t3&#39;}
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../Installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="index.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-right" title="Methodologies" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Aravind Sankaran.</p>
+    <p>&#169; Copyright 2024, HPAC Group, RWTH Aachen and Umeå University.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
