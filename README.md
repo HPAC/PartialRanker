@@ -1,12 +1,12 @@
-### Partial Ranker
+# Partial Ranker
 
 Partial Ranker is a library that implements methodologies for ranking a given set of objects with a *strict partial order* relation. For full documentations can be found here (TODO:Add link).
 
-**INPUT**:
+**Input**:
 
 At the moment, we support only vector objects as input. An example for a set of vector objects would be:
 
-```json
+```
 objects = {
     't0' : [0.1, 0.12, 0.11, 0.13 ],
     't1' : [0.10, 0.13, 0.10 ],
@@ -16,27 +16,27 @@ objects = {
 ```
 The *better-than relation* between a pair of objects with which the partial order is formed is implemented in the library. At the moment, we support better-than relation based on comparisons of the Inter-Quantile-Intervals of the objects.
 
-**OUTPUT**:
+**Output**:
 
 The output is an *ordered set partition* of the objects into ranks. For example:
 
-```json
+```
 Rank 0: ['t0', 't1'],
 Rank 1: ['t2']
 ```
 
-#### Installation
+### Installation
 
-Partial Ranker requires Python>=3.6 and can be installed with 
+Partial Ranker requires Python>=3.6 and can be installed using the command:
 
 ```bash
 pip install git+https://github.com/HPAC/PartialRanker
 ```
-#### Examples
+### Examples
 
 For usage and application examples, please follow the jupyter notebooks under the folder ``examples/``.
 
-#### Reference
+### Reference
 
 More details on partial ranking, the methodologies and applications can be found in [this paper](https://arxiv.org/abs/2405.18259). If you are using this library, please cite:
 
