@@ -6,7 +6,7 @@ on:
       - main  # Change this to your default branch if it's not 'main'
 
 jobs:
-  build:
+  build_docs:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,6 +28,7 @@ jobs:
 
     - name: Build Sphinx documentation
       run: |
+        sudo apt-get install pandoc
         cd docs
         ./sync_notebooks.sh
         ./autoapidoc.sh
