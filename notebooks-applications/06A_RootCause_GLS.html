@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Applications in Root Cause Analysis : GLS &mdash; Partial Ranker 0.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=10f1778b"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Applications in Root Cause Analysis : BPI" href="07A_RootCause_BPI.html" />
+    <link rel="prev" title="Applications" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Partial Ranker
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks-usage/01U_Usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks-usage/01U_Usage.html#Visualizing-the-Measurements">Visualizing the Measurements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks-usage/01U_Usage.html#The-Comparison-Matrix">The Comparison Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks-usage/01U_Usage.html#Partial-Ranking-of-the-Objects">Partial Ranking of the Objects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks-usage/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks-usage/02U_Methodology1.html">PartialRankerDFG</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks-usage/02U_Methodology1.html#Experiment-1">Experiment 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks-usage/02U_Methodology1.html#Experiment-2">Experiment 2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks-usage/03U_Methodology2.html">PartialRankerDFGReduced</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks-usage/03U_Methodology2.html#Experiment-2">Experiment 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks-usage/03U_Methodology2.html#Experiment-3">Experiment 3</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks-usage/04U_Methodology3.html">PartialRankerMin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks-usage/04U_Methodology3.html#Experiment-3">Experiment 3</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks-usage/05U_SpecialCases.html">Special Cases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks-usage/05U_SpecialCases.html#Experiment-4">Experiment 4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks-usage/05U_SpecialCases.html#Experiment-5">Experiment 5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks-usage/05U_SpecialCases.html#Experiment-6">Experiment 6</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Applications</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Root Cause Analysis: GLS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#The-Data">The Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Partial-Ranking-of-the-Algorithms">Partial Ranking of the Algorithms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Mining-for-the-Causes-of-Performance-Differences-in-terms-of-Kernel-Calls">Mining for the Causes of Performance Differences in terms of Kernel Calls</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="07A_RootCause_BPI.html">Root Cause Analysis: BPI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="07A_RootCause_BPI.html#Overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07A_RootCause_BPI.html#The-Data">The Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07A_RootCause_BPI.html#Partial-Ranking-of-the-Variants">Partial Ranking of the Variants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07A_RootCause_BPI.html#Mining-for-the-Causes-of-Performance-Differences">Mining for the Causes of Performance Differences</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/partial_ranker.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/partial_ranker.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/partial_ranker.html#module-partial_ranker.graph">partial_ranker.graph module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.graph.Graph"><code class="docutils literal notranslate"><span class="pre">Graph</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.graph.Graph.in_nodes"><code class="docutils literal notranslate"><span class="pre">Graph.in_nodes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.graph.Graph.out_nodes"><code class="docutils literal notranslate"><span class="pre">Graph.out_nodes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.graph.Graph.get_separable_arrangement"><code class="docutils literal notranslate"><span class="pre">Graph.get_separable_arrangement()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.graph.Graph.visualize"><code class="docutils literal notranslate"><span class="pre">Graph.visualize()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/partial_ranker.html#module-partial_ranker.measurements_simulator">partial_ranker.measurements_simulator module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.measurements_simulator.MeasurementsSimulator"><code class="docutils literal notranslate"><span class="pre">MeasurementsSimulator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.measurements_simulator.MeasurementsSimulator.measurements"><code class="docutils literal notranslate"><span class="pre">MeasurementsSimulator.measurements</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.measurements_simulator.MeasurementsSimulator.add_measurement"><code class="docutils literal notranslate"><span class="pre">MeasurementsSimulator.add_measurement()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.measurements_simulator.MeasurementsSimulator.get_measurements"><code class="docutils literal notranslate"><span class="pre">MeasurementsSimulator.get_measurements()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.measurements_simulator.MeasurementsSimulator.measure"><code class="docutils literal notranslate"><span class="pre">MeasurementsSimulator.measure()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.measurements_simulator.MeasurementsSimulator.normal"><code class="docutils literal notranslate"><span class="pre">MeasurementsSimulator.normal()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/partial_ranker.html#module-partial_ranker.measurements_visualizer">partial_ranker.measurements_visualizer module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.measurements_visualizer.MeasurementsVisualizer"><code class="docutils literal notranslate"><span class="pre">MeasurementsVisualizer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.measurements_visualizer.MeasurementsVisualizer.remove_outliers"><code class="docutils literal notranslate"><span class="pre">MeasurementsVisualizer.remove_outliers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.measurements_visualizer.MeasurementsVisualizer.show_measurement_histograms"><code class="docutils literal notranslate"><span class="pre">MeasurementsVisualizer.show_measurement_histograms()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.measurements_visualizer.MeasurementsVisualizer.show_measurements_boxplots"><code class="docutils literal notranslate"><span class="pre">MeasurementsVisualizer.show_measurements_boxplots()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.measurements_visualizer.MeasurementsVisualizer.show_measurements_violinplot"><code class="docutils literal notranslate"><span class="pre">MeasurementsVisualizer.show_measurements_violinplot()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/partial_ranker.html#module-partial_ranker.partial_ranker_dfg">partial_ranker.partial_ranker_dfg module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_dfg.PartialRankerDFG"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFG</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_dfg.PartialRankerDFG.dependencies"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFG.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_dfg.PartialRankerDFG.compute_ranks"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFG.compute_ranks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_dfg.PartialRankerDFG.get_dfg"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFG.get_dfg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_dfg.PartialRankerDFG.get_rank_obj"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFG.get_rank_obj()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_dfg.PartialRankerDFG.get_ranks"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFG.get_ranks()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/partial_ranker.html#module-partial_ranker.partial_ranker_dfg_r">partial_ranker.partial_ranker_dfg_r module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFGReduced</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.objs"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFGReduced.objs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.pr_dfg"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFGReduced.pr_dfg</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.graph_H"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFGReduced.graph_H</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.compute_ranks"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFGReduced.compute_ranks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.get_dfg"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFGReduced.get_dfg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.get_rank_obj"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFGReduced.get_rank_obj()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.get_ranks"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFGReduced.get_ranks()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/partial_ranker.html#module-partial_ranker.partial_ranker_min">partial_ranker.partial_ranker_min module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_min.PartialRankerMin"><code class="docutils literal notranslate"><span class="pre">PartialRankerMin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_min.PartialRankerMin.objs"><code class="docutils literal notranslate"><span class="pre">PartialRankerMin.objs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_min.PartialRankerMin.equivalence"><code class="docutils literal notranslate"><span class="pre">PartialRankerMin.equivalence</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_min.PartialRankerMin.compute_ranks"><code class="docutils literal notranslate"><span class="pre">PartialRankerMin.compute_ranks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_min.PartialRankerMin.get_dfg"><code class="docutils literal notranslate"><span class="pre">PartialRankerMin.get_dfg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_min.PartialRankerMin.get_rank_obj"><code class="docutils literal notranslate"><span class="pre">PartialRankerMin.get_rank_obj()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_min.PartialRankerMin.get_ranks"><code class="docutils literal notranslate"><span class="pre">PartialRankerMin.get_ranks()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/partial_ranker.html#module-partial_ranker.partial_ranker_wrapper">partial_ranker.partial_ranker_wrapper module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_wrapper.Method"><code class="docutils literal notranslate"><span class="pre">Method</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_wrapper.Method.DFG"><code class="docutils literal notranslate"><span class="pre">Method.DFG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_wrapper.Method.DFGReduced"><code class="docutils literal notranslate"><span class="pre">Method.DFGReduced</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_wrapper.Method.Min"><code class="docutils literal notranslate"><span class="pre">Method.Min</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_wrapper.PartialRanker"><code class="docutils literal notranslate"><span class="pre">PartialRanker</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_wrapper.PartialRanker.ranker"><code class="docutils literal notranslate"><span class="pre">PartialRanker.ranker</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_wrapper.PartialRanker.compute_ranks"><code class="docutils literal notranslate"><span class="pre">PartialRanker.compute_ranks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_wrapper.PartialRanker.get_dfg"><code class="docutils literal notranslate"><span class="pre">PartialRanker.get_dfg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_wrapper.PartialRanker.get_rank_obj"><code class="docutils literal notranslate"><span class="pre">PartialRanker.get_rank_obj()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_wrapper.PartialRanker.get_ranks"><code class="docutils literal notranslate"><span class="pre">PartialRanker.get_ranks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.partial_ranker_wrapper.PartialRanker.get_separable_arrangement"><code class="docutils literal notranslate"><span class="pre">PartialRanker.get_separable_arrangement()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/partial_ranker.html#module-partial_ranker.quantile_comparer">partial_ranker.quantile_comparer module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.quantile_comparer.QuantileComparer"><code class="docutils literal notranslate"><span class="pre">QuantileComparer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.quantile_comparer.QuantileComparer.C"><code class="docutils literal notranslate"><span class="pre">QuantileComparer.C</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.quantile_comparer.QuantileComparer.objs"><code class="docutils literal notranslate"><span class="pre">QuantileComparer.objs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.quantile_comparer.QuantileComparer.t_up"><code class="docutils literal notranslate"><span class="pre">QuantileComparer.t_up</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.quantile_comparer.QuantileComparer.t_low"><code class="docutils literal notranslate"><span class="pre">QuantileComparer.t_low</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.quantile_comparer.QuantileComparer.better_than_relation"><code class="docutils literal notranslate"><span class="pre">QuantileComparer.better_than_relation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.quantile_comparer.QuantileComparer.compare"><code class="docutils literal notranslate"><span class="pre">QuantileComparer.compare()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.quantile_comparer.QuantileComparer.compute_quantiles"><code class="docutils literal notranslate"><span class="pre">QuantileComparer.compute_quantiles()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/partial_ranker.html#partial_ranker.quantile_comparer.QuantileComparer.get_comparison_matrix"><code class="docutils literal notranslate"><span class="pre">QuantileComparer.get_comparison_matrix()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/partial_ranker.html#module-partial_ranker">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Partial Ranker</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Applications</a></li>
+      <li class="breadcrumb-item active">Applications in Root Cause Analysis : GLS</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks-applications/06A_RootCause_GLS.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Applications-in-Root-Cause-Analysis-:-GLS">
+<h1>Applications in Root Cause Analysis : GLS<a class="headerlink" href="#Applications-in-Root-Cause-Analysis-:-GLS" title="Link to this heading"></a></h1>
+<section id="Overview">
+<h2>Overview<a class="headerlink" href="#Overview" title="Link to this heading"></a></h2>
+<p>In this experiment, we demonstrate an application of partial ranking in High Performance Computing.</p>
+<p>In general, a mathematical expression can have several (sometimes over 100s) alternative program implementations (or algorithms) that are mathematically equivalent to one another. Each alternative algorithm can be identified as a sequence of library or kernel calls provided by optimized libraries such as BLAS and LAPACK, and these algorithms can differ from one another in terms of performance. It is not straightforward for the developers to optimize such codes and ensure high performance. In
+this experiment, we demonstrate the application of the partial ranking methodologies in identifying the root cause of performance differences in terms of kernel calls.</p>
+<p>To this end, let us consider the following Generalized Least Square (GLS) problem:</p>
+<p><span class="math notranslate nohighlight">\((X^T M^{-1} X)^{-1} X^T M^{-1} y\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(X \in \mathbb{R}^{1000 \times 100}\)</span></p>
+<p>We consider the algorithmic variants for solution of the GLS problem generated by the compiler <a class="reference external" href="https://github.com/HPAC/linnea">Linnea</a>. Linnea takes as input the mathematical expression for GLS in a high-level format, as if written on a black-board, and generates top 100 algorithms (in terms of number of Floating Point Operations) in the Julia language. To explore some algorithms generated by Linnea, use the online demo through this <a class="reference external" href="https://linnea.cs.umu.se/">link</a>.</p>
+</section>
+<section id="The-Data">
+<h2>The Data<a class="headerlink" href="#The-Data" title="Link to this heading"></a></h2>
+<p>We executed each of the 100 algorithms generated by Linnea 10 times on a Linux-based machine using 12 cores of an Intel-Xeon processor with turbo-boost enabled. We parsed the generated algorithms to identify the sequence of kernel calls, the corresponding number of Floating Point Operations (FLOPs), appended the execution times and saved the data in <code class="docutils literal notranslate"><span class="pre">examples/data/gls_1000_100.csv</span></code>. The data is read into a Pandas DataFrame, preprocessed for readability, and presented below:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+
+## Data preprocessing functions
+def clean_concept(name):
+    splits = name.split(&#39;=&#39;)
+    if len(splits) &gt; 1:
+        return splits[-1].strip()
+    return splits[0].strip()
+
+def remove_cost(name):
+    splits = name.split(&#39;_&#39;)
+    if len(splits) &gt; 1:
+        return splits[0].strip()
+    return splits[0].strip()
+
+def remove_LAPACK(name):
+    splits = name.split(&#39;.&#39;)
+    if len(splits) &gt; 1:
+        return splits[-1].strip()
+    return splits[0].strip()
+
+df = pd.read_csv(&#39;data/gls_1000_100.csv&#39;,sep=&#39;;&#39;)
+df[&#39;concept:name&#39;] = df[&#39;concept:name&#39;].apply(lambda row: clean_concept(row))
+df[&#39;concept:name&#39;] = df[&#39;concept:name&#39;].apply(lambda row: remove_cost(row))
+df[&#39;concept:name&#39;] = df[&#39;concept:name&#39;].apply(lambda row: remove_LAPACK(row))
+
+#rename columns to meaningful names
+df.rename(columns={
+    &#39;case:concept:name&#39;: &#39;algID_repID&#39;,
+    &#39;concept:name&#39;: &#39;kernel&#39;,
+    &#39;concept:flops&#39;: &#39;FLOPs&#39;,
+    &#39;concept:operation&#39;: &#39;operation&#39;,
+    &#39;concept:kernel&#39;: &#39;kernel_signature&#39;,
+    &#39;timestamp:start&#39;: &#39;timestamp:start&#39;,
+    &#39;timestamp:end&#39;: &#39;timestamp:end&#39;
+}, inplace=True)
+
+df.head(10)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>algID_repID</th>
+      <th>kernel</th>
+      <th>FLOPs</th>
+      <th>operation</th>
+      <th>kernel_signature</th>
+      <th>timestamp:start</th>
+      <th>timestamp:end</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>algorithm23_13</td>
+      <td>potrf</td>
+      <td>333000000.0</td>
+      <td>(L2 L2^T) = M</td>
+      <td>LAPACK.potrf!('L', ml1)</td>
+      <td>1.671793e+09</td>
+      <td>1.671793e+09</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>algorithm23_13</td>
+      <td>trsm</td>
+      <td>100000000.0</td>
+      <td>tmp12 = (L2^-1 X)</td>
+      <td>trsm!('L', 'L', 'N', 'N', 1.0, ml1, ml0)</td>
+      <td>1.671793e+09</td>
+      <td>1.671793e+09</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>algorithm23_13</td>
+      <td>trsv</td>
+      <td>1000000.0</td>
+      <td>tmp68 = (L2^-1 y)</td>
+      <td>trsv!('L', 'N', 'N', ml1, ml2)</td>
+      <td>1.671793e+09</td>
+      <td>1.671793e+09</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>algorithm23_13</td>
+      <td>gemv</td>
+      <td>200000.0</td>
+      <td>tmp21 = (tmp12^T tmp68)</td>
+      <td>gemv!('T', 1.0, ml0, ml2, 0.0, ml3)</td>
+      <td>1.671793e+09</td>
+      <td>1.671793e+09</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>algorithm23_13</td>
+      <td>syrk</td>
+      <td>10000000.0</td>
+      <td>tmp14 = (tmp12^T tmp12)</td>
+      <td>syrk!('L', 'T', 1.0, ml0, 0.0, ml4)</td>
+      <td>1.671793e+09</td>
+      <td>1.671793e+09</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>algorithm23_13</td>
+      <td>qr</td>
+      <td>2670000.0</td>
+      <td>(Q16 R17) = tmp14</td>
+      <td>ml4 = qr!(ml4)</td>
+      <td>1.671793e+09</td>
+      <td>1.671793e+09</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>algorithm23_13</td>
+      <td>gemv</td>
+      <td>20000.0</td>
+      <td>tmp25 = (Q16^T tmp21)</td>
+      <td>gemv!('T', 1.0, ml5, ml3, 0.0, ml6)</td>
+      <td>1.671793e+09</td>
+      <td>1.671793e+09</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>algorithm23_13</td>
+      <td>trsv</td>
+      <td>10000.0</td>
+      <td>tmp24 = (R17^-1 tmp25)</td>
+      <td>trsv!('U', 'N', 'N', ml7, ml6)</td>
+      <td>1.671793e+09</td>
+      <td>1.671793e+09</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>algorithm1_19</td>
+      <td>potrf</td>
+      <td>333000000.0</td>
+      <td>(L2 L2^T) = M</td>
+      <td>LAPACK.potrf!('L', ml1)</td>
+      <td>1.671793e+09</td>
+      <td>1.671793e+09</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>algorithm1_19</td>
+      <td>trsv</td>
+      <td>1000000.0</td>
+      <td>tmp68 = (L2^-1 y)</td>
+      <td>trsv!('L', 'N', 'N', ml1, ml2)</td>
+      <td>1.671793e+09</td>
+      <td>1.671793e+09</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>The column <code class="docutils literal notranslate"><span class="pre">algID_repID</span></code> represents the algorithm ID at a particular repetition. Single <code class="docutils literal notranslate"><span class="pre">algID_repID</span></code> is mapped to several BLAS kernels, whose sequence can be deduced from the timestamps. The total execution time of a particular repetition of an algorithm can be deduced by summing the duration of all the kernel calls based on the timestamps for that <code class="docutils literal notranslate"><span class="pre">algID_repID</span></code>.</p>
+<p>Out of the 100 algorithms, we consider only those algorithms whose average execution time was not more than 1.2x the average execution time of the algorithm with the fastest average execution time. This leaves us with the 10 algorithms shown below:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>short_list = [&#39;algorithm2&#39;, &#39;algorithm8&#39;, &#39;algorithm17&#39;, &#39;algorithm53&#39;,
+            &#39;algorithm54&#39;, &#39;algorithm58&#39;, &#39;algorithm62&#39;, &#39;algorithm66&#39;, &#39;algorithm99&#39;, &#39;algorithm88&#39;]
+</pre></div>
+</div>
+</div>
+<p>We consolidate the execution times of the shortlisted algorithms from all the repetitions and prepare the measurement data in the following format:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="err">measureme</span><span class="kc">nts</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="err">&#39;algori</span><span class="kc">t</span><span class="err">hm</span><span class="mi">2</span><span class="err">&#39;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.025</span><span class="p">,</span><span class="w"> </span><span class="mf">0.024</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">,</span><span class="w"> </span><span class="p">],</span>
+<span class="w">    </span><span class="err">&#39;algori</span><span class="kc">t</span><span class="err">hm</span><span class="mi">8</span><span class="err">&#39;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.023</span><span class="p">,</span><span class="w"> </span><span class="mf">0.024</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">,</span><span class="w"> </span><span class="p">],</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def get_trace_durations(event_table):
+    &quot;&quot;&quot;calculates duration of each case from event table&quot;&quot;&quot;
+    dfs = event_table.drop_duplicates(&#39;algID_repID&#39;, keep=&#39;first&#39;)[[&#39;algID_repID&#39;, &#39;timestamp:start&#39;]]
+    dfe = event_table.drop_duplicates(&#39;algID_repID&#39;, keep=&#39;last&#39;)[[&#39;algID_repID&#39;, &#39;timestamp:end&#39;]]
+    dfm = dfs.merge(dfe, on=&#39;algID_repID&#39;)
+    dfm[&#39;case:duration&#39;] = dfm.apply(lambda row: row[&#39;timestamp:end&#39;] - row[&#39;timestamp:start&#39;], axis=1)
+    dfm = dfm.rename(columns={
+        &#39;timestamp:start&#39;: &#39;case:timestamp:start&#39;,
+        &#39;timestamp:end&#39;: &#39;case:timestamp:end&#39;,
+    })
+
+    alg_list = [alg.split(&#39;_&#39;)[0] for alg in list(dfm[&#39;algID_repID&#39;])]
+    alg_list = list(set(alg_list))
+
+    alg_measurements = {}
+    for alg in alg_list:
+        t_alg = dfm[dfm.apply( lambda x: x[&#39;algID_repID&#39;].split(&#39;_&#39;)[0] == alg, axis=1)]
+        alg_measurements[alg] = list(t_alg[&#39;case:duration&#39;])
+    return alg_measurements
+
+df[&#39;case:variant&#39;] = df[&#39;algID_repID&#39;].apply(lambda row: row.split(&#39;_&#39;)[0])
+
+
+df = df[df[&#39;case:variant&#39;].isin(short_list)]
+
+measurements = get_trace_durations(df)
+</pre></div>
+</div>
+</div>
+<p>The measurements are visualized using the <code class="docutils literal notranslate"><span class="pre">partial_ranker.MeasurementsVisualizer</span></code> module.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from partial_ranker import MeasurementsVisualizer
+
+mv = MeasurementsVisualizer(measurements, short_list)
+fig = mv.show_measurements_boxplots(scale=0.6)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks-applications_06A_RootCause_GLS_10_0.png" src="../_images/notebooks-applications_06A_RootCause_GLS_10_0.png" />
+</div>
+</div>
+</section>
+<section id="Partial-Ranking-of-the-Algorithms">
+<h2>Partial Ranking of the Algorithms<a class="headerlink" href="#Partial-Ranking-of-the-Algorithms" title="Link to this heading"></a></h2>
+<p>We apply Methodology 2 (<code class="docutils literal notranslate"><span class="pre">partial_ranker.PartialRankerDFGReduced</span></code>) to rank the algorithms.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from partial_ranker import QuantileComparer
+from partial_ranker import PartialRankerDFGReduced
+
+comparer = QuantileComparer(measurements)
+comparer.compute_quantiles(q_max=75, q_min=25,outliers=False)
+comparer.compare()
+pr_dfg = PartialRankerDFGReduced(comparer)
+pr_dfg.compute_ranks()
+
+R = pr_dfg.get_ranks()
+for k,v in R.items():
+    print(f&#39;Rank {k}: {v}&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Rank 0: [&#39;algorithm8&#39;, &#39;algorithm58&#39;, &#39;algorithm2&#39;, &#39;algorithm53&#39;, &#39;algorithm54&#39;]
+Rank 1: [&#39;algorithm99&#39;, &#39;algorithm88&#39;, &#39;algorithm66&#39;, &#39;algorithm62&#39;, &#39;algorithm17&#39;]
+</pre></div></div>
+</div>
+</section>
+<section id="Mining-for-the-Causes-of-Performance-Differences-in-terms-of-Kernel-Calls">
+<h2>Mining for the Causes of Performance Differences in terms of Kernel Calls<a class="headerlink" href="#Mining-for-the-Causes-of-Performance-Differences-in-terms-of-Kernel-Calls" title="Link to this heading"></a></h2>
+<p><strong>1. Identify the dependencies among the kernels:</strong> We prepare a Directly-Follows Graph (DFG) where kernels are the nodes and an an edge from <code class="docutils literal notranslate"><span class="pre">kernelA</span></code> to <code class="docutils literal notranslate"><span class="pre">kernelB</span></code> exists if <code class="docutils literal notranslate"><span class="pre">kernelA</span></code> immediately follows <code class="docutils literal notranslate"><span class="pre">kernelB</span></code> in atleast one of the short-listed algorithms.</p>
+<p><strong>2. Graph coloring</strong>: We color the nodes and edges of the graph as follows:</p>
+<ul class="simple">
+<li><p>The nodes and edges that occur <em>only</em> in the algorithms with Rank 0 are indicated in <em>green</em>.</p></li>
+<li><p>The nodes and edges that occur <em>only</em> in the algorithms with Rank 1 are indicated in <em>red</em>.</p></li>
+<li><p>The nodes and edges that occur <em>both</em> in the algorithms with Rank 0 and 1 are not colored.</p></li>
+</ul>
+<p><strong>Requirements</strong>:</p>
+<p>To run the cells below, the following packages should be installed in the python environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#sudo apt-get install graphviz graphviz-devel</span>
+pip<span class="w"> </span>install<span class="w"> </span>pm4py
+pip<span class="w"> </span>install<span class="w"> </span>pygraphviz
+</pre></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from pm4py.objects.conversion.log import converter as log_converter
+from variants_compare import VariantsCompare
+
+et = df.copy()
+et.rename(columns={
+    &#39;algID_repID&#39;: &#39;case:concept:name&#39;,
+    &#39;kernel&#39;: &#39;concept:name&#39;,
+}, inplace=True)
+xes_log = log_converter.apply(et)
+
+fast = R[0]
+slow = R[1]
+
+activity_key = &#39;concept:name&#39;
+vc = VariantsCompare(xes_log,fast,slow,activity_key=activity_key, variants_id_key=&quot;variant&quot;)
+gviz = vc.get_dfg_minus_best_worst(orientation=&#39;LR&#39;)
+gviz
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks-applications_06A_RootCause_GLS_17_0.svg" src="../_images/notebooks-applications_06A_RootCause_GLS_17_0.svg" /></div>
+</div>
+<p><strong>Inference</strong>: It can be found that all the algorithms with Rank 0 use the kernel <code class="docutils literal notranslate"><span class="pre">gemm</span></code>, which is a BLAS kernel for matrix-matrix multiplication, and the algorithms with Rank 1 do not use them. Instead the algorithms with Rank 1 solve the GLS problem through QR factorization.</p>
+<p>We do not identify this cause by coloring based on Top-1 or Top-K ranking methods. This motivates the need for partial ranking.</p>
+<p>Top-1 Median</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fast = [&#39;algorithm2&#39;]
+slow = [&#39;algorithm8&#39;,&#39;algorithm17&#39;,&#39;algorithm53&#39;,&#39;algorithm54&#39;,&#39;algorithm58&#39;,&#39;algorithm62&#39;,&#39;algorithm66&#39;,&#39;algorithm99&#39;,&#39;algorithm88&#39;]
+vc = VariantsCompare(xes_log,fast,slow,activity_key=activity_key, variants_id_key=&quot;variant&quot;)
+
+gviz = vc.get_dfg_minus_best_worst(orientation=&#39;LR&#39;)
+gviz
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks-applications_06A_RootCause_GLS_21_0.svg" src="../_images/notebooks-applications_06A_RootCause_GLS_21_0.svg" /></div>
+</div>
+<p>Top-4 Median</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fast = [&#39;algorithm8&#39;,&#39;algorithm2&#39;,&#39;algorithm53&#39;,&#39;algorithm58&#39;]
+slow = [&#39;algorithm17&#39;,&#39;algorithm54&#39;,&#39;algorithm62&#39;,&#39;algorithm66&#39;,&#39;algorithm99&#39;,&#39;algorithm88&#39;]
+vc = VariantsCompare(xes_log,fast,slow,activity_key=activity_key, variants_id_key=&quot;variant&quot;)
+
+gviz = vc.get_dfg_minus_best_worst(orientation=&#39;LR&#39;)
+gviz
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks-applications_06A_RootCause_GLS_24_0.svg" src="../_images/notebooks-applications_06A_RootCause_GLS_24_0.svg" /></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Applications" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="07A_RootCause_BPI.html" class="btn btn-neutral float-right" title="Applications in Root Cause Analysis : BPI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Aravind Sankaran.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

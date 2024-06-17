@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>partial_ranker package &mdash; Partial Ranker 0.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=10f1778b"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Applications in Root Cause Analysis : BPI" href="../notebooks-applications/07A_RootCause_BPI.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Partial Ranker
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks-usage/01U_Usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks-usage/01U_Usage.html#Visualizing-the-Measurements">Visualizing the Measurements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks-usage/01U_Usage.html#The-Comparison-Matrix">The Comparison Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks-usage/01U_Usage.html#Partial-Ranking-of-the-Objects">Partial Ranking of the Objects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks-usage/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks-usage/02U_Methodology1.html">PartialRankerDFG</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks-usage/02U_Methodology1.html#Experiment-1">Experiment 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks-usage/02U_Methodology1.html#Experiment-2">Experiment 2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks-usage/03U_Methodology2.html">PartialRankerDFGReduced</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks-usage/03U_Methodology2.html#Experiment-2">Experiment 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks-usage/03U_Methodology2.html#Experiment-3">Experiment 3</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks-usage/04U_Methodology3.html">PartialRankerMin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks-usage/04U_Methodology3.html#Experiment-3">Experiment 3</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks-usage/05U_SpecialCases.html">Special Cases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks-usage/05U_SpecialCases.html#Experiment-4">Experiment 4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks-usage/05U_SpecialCases.html#Experiment-5">Experiment 5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks-usage/05U_SpecialCases.html#Experiment-6">Experiment 6</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks-applications/index.html">Applications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks-applications/06A_RootCause_GLS.html">Root Cause Analysis: GLS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks-applications/06A_RootCause_GLS.html#Overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks-applications/06A_RootCause_GLS.html#The-Data">The Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks-applications/06A_RootCause_GLS.html#Partial-Ranking-of-the-Algorithms">Partial Ranking of the Algorithms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks-applications/06A_RootCause_GLS.html#Mining-for-the-Causes-of-Performance-Differences-in-terms-of-Kernel-Calls">Mining for the Causes of Performance Differences in terms of Kernel Calls</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks-applications/07A_RootCause_BPI.html">Root Cause Analysis: BPI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks-applications/07A_RootCause_BPI.html#Overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks-applications/07A_RootCause_BPI.html#The-Data">The Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks-applications/07A_RootCause_BPI.html#Partial-Ranking-of-the-Variants">Partial Ranking of the Variants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks-applications/07A_RootCause_BPI.html#Mining-for-the-Causes-of-Performance-Differences">Mining for the Causes of Performance Differences</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-partial_ranker.graph">partial_ranker.graph module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#partial_ranker.graph.Graph"><code class="docutils literal notranslate"><span class="pre">Graph</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.graph.Graph.in_nodes"><code class="docutils literal notranslate"><span class="pre">Graph.in_nodes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.graph.Graph.out_nodes"><code class="docutils literal notranslate"><span class="pre">Graph.out_nodes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.graph.Graph.get_separable_arrangement"><code class="docutils literal notranslate"><span class="pre">Graph.get_separable_arrangement()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.graph.Graph.visualize"><code class="docutils literal notranslate"><span class="pre">Graph.visualize()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-partial_ranker.measurements_simulator">partial_ranker.measurements_simulator module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#partial_ranker.measurements_simulator.MeasurementsSimulator"><code class="docutils literal notranslate"><span class="pre">MeasurementsSimulator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.measurements_simulator.MeasurementsSimulator.measurements"><code class="docutils literal notranslate"><span class="pre">MeasurementsSimulator.measurements</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.measurements_simulator.MeasurementsSimulator.add_measurement"><code class="docutils literal notranslate"><span class="pre">MeasurementsSimulator.add_measurement()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.measurements_simulator.MeasurementsSimulator.get_measurements"><code class="docutils literal notranslate"><span class="pre">MeasurementsSimulator.get_measurements()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.measurements_simulator.MeasurementsSimulator.measure"><code class="docutils literal notranslate"><span class="pre">MeasurementsSimulator.measure()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.measurements_simulator.MeasurementsSimulator.normal"><code class="docutils literal notranslate"><span class="pre">MeasurementsSimulator.normal()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-partial_ranker.measurements_visualizer">partial_ranker.measurements_visualizer module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#partial_ranker.measurements_visualizer.MeasurementsVisualizer"><code class="docutils literal notranslate"><span class="pre">MeasurementsVisualizer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.measurements_visualizer.MeasurementsVisualizer.remove_outliers"><code class="docutils literal notranslate"><span class="pre">MeasurementsVisualizer.remove_outliers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.measurements_visualizer.MeasurementsVisualizer.show_measurement_histograms"><code class="docutils literal notranslate"><span class="pre">MeasurementsVisualizer.show_measurement_histograms()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.measurements_visualizer.MeasurementsVisualizer.show_measurements_boxplots"><code class="docutils literal notranslate"><span class="pre">MeasurementsVisualizer.show_measurements_boxplots()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.measurements_visualizer.MeasurementsVisualizer.show_measurements_violinplot"><code class="docutils literal notranslate"><span class="pre">MeasurementsVisualizer.show_measurements_violinplot()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-partial_ranker.partial_ranker_dfg">partial_ranker.partial_ranker_dfg module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#partial_ranker.partial_ranker_dfg.PartialRankerDFG"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFG</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_dfg.PartialRankerDFG.dependencies"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFG.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_dfg.PartialRankerDFG.compute_ranks"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFG.compute_ranks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_dfg.PartialRankerDFG.get_dfg"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFG.get_dfg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_dfg.PartialRankerDFG.get_rank_obj"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFG.get_rank_obj()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_dfg.PartialRankerDFG.get_ranks"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFG.get_ranks()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-partial_ranker.partial_ranker_dfg_r">partial_ranker.partial_ranker_dfg_r module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFGReduced</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.objs"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFGReduced.objs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.pr_dfg"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFGReduced.pr_dfg</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.graph_H"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFGReduced.graph_H</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.compute_ranks"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFGReduced.compute_ranks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.get_dfg"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFGReduced.get_dfg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.get_rank_obj"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFGReduced.get_rank_obj()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.get_ranks"><code class="docutils literal notranslate"><span class="pre">PartialRankerDFGReduced.get_ranks()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-partial_ranker.partial_ranker_min">partial_ranker.partial_ranker_min module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#partial_ranker.partial_ranker_min.PartialRankerMin"><code class="docutils literal notranslate"><span class="pre">PartialRankerMin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_min.PartialRankerMin.objs"><code class="docutils literal notranslate"><span class="pre">PartialRankerMin.objs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_min.PartialRankerMin.equivalence"><code class="docutils literal notranslate"><span class="pre">PartialRankerMin.equivalence</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_min.PartialRankerMin.compute_ranks"><code class="docutils literal notranslate"><span class="pre">PartialRankerMin.compute_ranks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_min.PartialRankerMin.get_dfg"><code class="docutils literal notranslate"><span class="pre">PartialRankerMin.get_dfg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_min.PartialRankerMin.get_rank_obj"><code class="docutils literal notranslate"><span class="pre">PartialRankerMin.get_rank_obj()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_min.PartialRankerMin.get_ranks"><code class="docutils literal notranslate"><span class="pre">PartialRankerMin.get_ranks()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-partial_ranker.partial_ranker_wrapper">partial_ranker.partial_ranker_wrapper module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#partial_ranker.partial_ranker_wrapper.Method"><code class="docutils literal notranslate"><span class="pre">Method</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_wrapper.Method.DFG"><code class="docutils literal notranslate"><span class="pre">Method.DFG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_wrapper.Method.DFGReduced"><code class="docutils literal notranslate"><span class="pre">Method.DFGReduced</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_wrapper.Method.Min"><code class="docutils literal notranslate"><span class="pre">Method.Min</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#partial_ranker.partial_ranker_wrapper.PartialRanker"><code class="docutils literal notranslate"><span class="pre">PartialRanker</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_wrapper.PartialRanker.ranker"><code class="docutils literal notranslate"><span class="pre">PartialRanker.ranker</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_wrapper.PartialRanker.compute_ranks"><code class="docutils literal notranslate"><span class="pre">PartialRanker.compute_ranks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_wrapper.PartialRanker.get_dfg"><code class="docutils literal notranslate"><span class="pre">PartialRanker.get_dfg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_wrapper.PartialRanker.get_rank_obj"><code class="docutils literal notranslate"><span class="pre">PartialRanker.get_rank_obj()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_wrapper.PartialRanker.get_ranks"><code class="docutils literal notranslate"><span class="pre">PartialRanker.get_ranks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.partial_ranker_wrapper.PartialRanker.get_separable_arrangement"><code class="docutils literal notranslate"><span class="pre">PartialRanker.get_separable_arrangement()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-partial_ranker.quantile_comparer">partial_ranker.quantile_comparer module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#partial_ranker.quantile_comparer.QuantileComparer"><code class="docutils literal notranslate"><span class="pre">QuantileComparer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.quantile_comparer.QuantileComparer.C"><code class="docutils literal notranslate"><span class="pre">QuantileComparer.C</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.quantile_comparer.QuantileComparer.objs"><code class="docutils literal notranslate"><span class="pre">QuantileComparer.objs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.quantile_comparer.QuantileComparer.t_up"><code class="docutils literal notranslate"><span class="pre">QuantileComparer.t_up</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.quantile_comparer.QuantileComparer.t_low"><code class="docutils literal notranslate"><span class="pre">QuantileComparer.t_low</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.quantile_comparer.QuantileComparer.better_than_relation"><code class="docutils literal notranslate"><span class="pre">QuantileComparer.better_than_relation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.quantile_comparer.QuantileComparer.compare"><code class="docutils literal notranslate"><span class="pre">QuantileComparer.compare()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.quantile_comparer.QuantileComparer.compute_quantiles"><code class="docutils literal notranslate"><span class="pre">QuantileComparer.compute_quantiles()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#partial_ranker.quantile_comparer.QuantileComparer.get_comparison_matrix"><code class="docutils literal notranslate"><span class="pre">QuantileComparer.get_comparison_matrix()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-partial_ranker">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Partial Ranker</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">partial_ranker package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/partial_ranker.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="partial-ranker-package">
+<h1>partial_ranker package<a class="headerlink" href="#partial-ranker-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-partial_ranker.graph">
+<span id="partial-ranker-graph-module"></span><h2>partial_ranker.graph module<a class="headerlink" href="#module-partial_ranker.graph" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="partial_ranker.graph.Graph">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partial_ranker.graph.</span></span><span class="sig-name descname"><span class="pre">Graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dependencies</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partial_ranker.graph.Graph" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to represent the dependencies of the objects as a transitively reduced directed acyclic graph.</p>
+<dl>
+<dt>Inputs:</dt><dd><p><strong>deps (dict[str, list[str]])</strong>: Dictionary with nodes as keys and a list of nodes that it depends on as values.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>e.g.; if dependency is based on a better-than relation, then in deps that look like <code class="docutils literal notranslate"><span class="pre">{'obj1':</span> <span class="pre">['obj2',</span> <span class="pre">'obj3],</span> <span class="pre">'obj2':</span> <span class="pre">['obj4'],</span> <span class="pre">...}</span></code>, <code class="docutils literal notranslate"><span class="pre">obj2</span></code> and <code class="docutils literal notranslate"><span class="pre">obj3</span></code> are better than <code class="docutils literal notranslate"><span class="pre">obj1</span></code>, <code class="docutils literal notranslate"><span class="pre">obj4</span></code> is better than <code class="docutils literal notranslate"><span class="pre">obj2</span></code>, etc.</p></li>
+</ul>
+</div></blockquote>
+<p><strong>depths (dict[int,List[str]])</strong>: A dictionary consisting of the list of objects at each rank.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>e.g.; in  <code class="docutils literal notranslate"><span class="pre">{0:</span> <span class="pre">['obj1'],</span> <span class="pre">1:</span> <span class="pre">['obj2',</span> <span class="pre">'obj3'],</span> <span class="pre">...}</span></code>, <code class="docutils literal notranslate"><span class="pre">obj1</span></code> is at rank 0, <code class="docutils literal notranslate"><span class="pre">obj2</span></code> and <code class="docutils literal notranslate"><span class="pre">obj3</span></code> are at rank 1, etc.</p></li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+<p><strong>Attributes and Methods</strong>:</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partial_ranker.graph.Graph.in_nodes">
+<span class="sig-name descname"><span class="pre">in_nodes</span></span><a class="headerlink" href="#partial_ranker.graph.Graph.in_nodes" title="Link to this definition"></a></dt>
+<dd><p>Dictionary with nodes as keys and a list of nodes that has incoming edges to the node indicated in the key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[str, list[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partial_ranker.graph.Graph.out_nodes">
+<span class="sig-name descname"><span class="pre">out_nodes</span></span><a class="headerlink" href="#partial_ranker.graph.Graph.out_nodes" title="Link to this definition"></a></dt>
+<dd><p>Dictionary with nodes as keys and a list of nodes that has outgoing edges from the node indicated in the key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[str, list[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.graph.Graph.get_separable_arrangement">
+<span class="sig-name descname"><span class="pre">get_separable_arrangement</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span></span></span><a class="headerlink" href="#partial_ranker.graph.Graph.get_separable_arrangement" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Arrangement of the objects according to Methodology 2 (Step 1 to 3) in the paper.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.graph.Graph.visualize">
+<span class="sig-name descname"><span class="pre">visualize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">highlight_nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partial_ranker.graph.Graph.visualize" title="Link to this definition"></a></dt>
+<dd><p>Visualize the dependencies and ranks of the objects as a transitively reduced directed acyclic graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>highlight_nodes</strong> (<em>list</em><em>, </em><em>optional</em>) – The nodes in this list are highlighted in the visualization. Defaults to [].</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A graphviz object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>graphviz.Digraph</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-partial_ranker.measurements_simulator">
+<span id="partial-ranker-measurements-simulator-module"></span><h2>partial_ranker.measurements_simulator module<a class="headerlink" href="#module-partial_ranker.measurements_simulator" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="partial_ranker.measurements_simulator.MeasurementsSimulator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partial_ranker.measurements_simulator.</span></span><span class="sig-name descname"><span class="pre">MeasurementsSimulator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partial_ranker.measurements_simulator.MeasurementsSimulator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for simulating measurements values using a normal distribution. Given a dictionary with object IDs as keys, and [mean, std] as values,
+measurement values are generated and stored.</p>
+<dl>
+<dt>Inputs:</dt><dd><p><strong>obj_params (dict[str,List[float]])</strong>: Keys are object IDs (str) whose value indicates the mean and standard deviation of the normal distribution represented as [mean, std].</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>e.g., for noramal distribution, <code class="docutils literal notranslate"><span class="pre">{'obj1':</span> <span class="pre">[1.0,</span> <span class="pre">0.1],</span> <span class="pre">'obj2':</span> <span class="pre">[2.0,</span> <span class="pre">0.2],</span> <span class="pre">...}</span></code>, the mean and std are 1.0 and 0.1 for object ‘obj1’, and 2.0 and 0.2 for object ‘obj2’.</p></li>
+</ul>
+</div></blockquote>
+<p><strong>seed (int)</strong>: The numpy seed used to generate measurements. Defaults to 0.</p>
+</dd>
+</dl>
+<p><strong>Attributes and Methods</strong>:</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partial_ranker.measurements_simulator.MeasurementsSimulator.measurements">
+<span class="sig-name descname"><span class="pre">measurements</span></span><a class="headerlink" href="#partial_ranker.measurements_simulator.MeasurementsSimulator.measurements" title="Link to this definition"></a></dt>
+<dd><p>A dictionary to store measurements. Keys are object IDs (str), and values are lists of measurement values.</p>
+<ul class="simple">
+<li><p>e.g., <code class="docutils literal notranslate"><span class="pre">{'obj1':</span> <span class="pre">[1.0,</span> <span class="pre">2.0,</span> <span class="pre">3.0],</span> <span class="pre">'obj2':</span> <span class="pre">[4.0,</span> <span class="pre">5.0,</span> <span class="pre">6.0,</span> <span class="pre">9.0],</span> <span class="pre">...}</span></code></p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[str,List[float]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.measurements_simulator.MeasurementsSimulator.add_measurement">
+<span class="sig-name descname"><span class="pre">add_measurement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#partial_ranker.measurements_simulator.MeasurementsSimulator.add_measurement" title="Link to this definition"></a></dt>
+<dd><p>Adds a measurement to the measurements dictionary  under the object ID <cite>obj_id</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj_id</strong> (<em>str</em><em> | </em><em>int</em>) – The ID of the object.</p></li>
+<li><p><strong>x</strong> (<em>float</em>) – The measurement value to add.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.measurements_simulator.MeasurementsSimulator.get_measurements">
+<span class="sig-name descname"><span class="pre">get_measurements</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#partial_ranker.measurements_simulator.MeasurementsSimulator.get_measurements" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>A dictionary containing measurements.</dt><dd><p>Keys are object IDs (str), and values are lists of measurement values.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[str,List[float]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.measurements_simulator.MeasurementsSimulator.measure">
+<span class="sig-name descname"><span class="pre">measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#partial_ranker.measurements_simulator.MeasurementsSimulator.measure" title="Link to this definition"></a></dt>
+<dd><p>Generates measurements for each object based on the specified distribution parameters and number of repetitions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>reps</strong> (<em>int</em>) – The number of repetitions for measuring each object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.measurements_simulator.MeasurementsSimulator.normal">
+<span class="sig-name descname"><span class="pre">normal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mean</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#partial_ranker.measurements_simulator.MeasurementsSimulator.normal" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mean</strong> (<em>float</em>) – The mean of the normal distribution.</p></li>
+<li><p><strong>std</strong> (<em>float</em>) – The standard deviation of the normal distribution.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A random number from the normal distribution.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-partial_ranker.measurements_visualizer">
+<span id="partial-ranker-measurements-visualizer-module"></span><h2>partial_ranker.measurements_visualizer module<a class="headerlink" href="#module-partial_ranker.measurements_visualizer" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="partial_ranker.measurements_visualizer.MeasurementsVisualizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partial_ranker.measurements_visualizer.</span></span><span class="sig-name descname"><span class="pre">MeasurementsVisualizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">measurements</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj_seq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partial_ranker.measurements_visualizer.MeasurementsVisualizer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for visualizing sets of measurements as box-plots or violin-plots.
+The y-axis indicates the object ID and the x-axis indicates the measurement values.</p>
+<dl>
+<dt>Input:</dt><dd><p><strong>measurements (dict[str, List[float]])</strong>: A dictionary of objects consisting of a list of measurement values.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>e.g., <code class="docutils literal notranslate"><span class="pre">{'obj1':</span> <span class="pre">[1.0,</span> <span class="pre">2.0,</span> <span class="pre">3.0],</span> <span class="pre">'obj2':</span> <span class="pre">[4.0,</span> <span class="pre">5.0,</span> <span class="pre">6.0,</span> <span class="pre">9.0],</span> <span class="pre">...}</span></code></p></li>
+</ul>
+</div></blockquote>
+<dl class="simple">
+<dt><strong>obj_seq (List[str], optional)</strong>:</dt><dd><p>A list of object IDs which represents the order in which the y-axis of the visualization should be arranged.
+If not provided, it defaults to a random order.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p><strong>Methods</strong>:</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.measurements_visualizer.MeasurementsVisualizer.remove_outliers">
+<span class="sig-name descname"><span class="pre">remove_outliers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#partial_ranker.measurements_visualizer.MeasurementsVisualizer.remove_outliers" title="Link to this definition"></a></dt>
+<dd><p>Remove outliers from a list of measurements. To this end, the first and third quartiles (Q1 and Q3) and the interquartile range (IQR)
+of the input list of measurements are computed and the outliers are identified as values that fall below Q1 - 1.5 * IQR
+or above Q3 + 1.5 * IQR. The method returns a new list containing only the non-outlier measurements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – A list of measurement values.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of measurement values with outliers removed.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.measurements_visualizer.MeasurementsVisualizer.show_measurement_histograms">
+<span class="sig-name descname"><span class="pre">show_measurement_histograms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hspace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partial_ranker.measurements_visualizer.MeasurementsVisualizer.show_measurement_histograms" title="Link to this definition"></a></dt>
+<dd><p>Displays a subplot with a histogram of measurements for each object in obj_list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj_list</strong> (<em>List</em><em>, </em><em>optional</em>) – The subplots are shown only for the those objects in the list. The subplots are arranged according to the order of the objects in the list.</p></li>
+<li><p><strong>objects.</strong> (<em>Defaults to a random order</em><em> of </em><em>all</em>)</p></li>
+<li><p><strong>bins</strong> (<em>int</em><em>, </em><em>optional</em>) – bins the measurements values. Defaults to 10.</p></li>
+<li><p><strong>hspace</strong> (<em>float</em><em>, </em><em>optional</em>) – matplotlib paramater to control the space between the subplots. Defaults to 0.5.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>matplotlib.pyplot.figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.measurements_visualizer.MeasurementsVisualizer.show_measurements_boxplots">
+<span class="sig-name descname"><span class="pre">show_measurements_boxplots</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outliers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tick_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partial_ranker.measurements_visualizer.MeasurementsVisualizer.show_measurements_boxplots" title="Link to this definition"></a></dt>
+<dd><p>Displays a graph with a boxplot of measurements for each object in obj_list. The box represents the Inter Quartile Interval (IQI),
+which is the interval between the 25th and the 75th quantile values, and the red line within the box represents the median value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj_list</strong> (<em>List</em><em>, </em><em>optional</em>) – The boxplots are shown only for the those objects in the list. The boxplots are arranged according to the order of the objects in the list. Defaults to a random order of all objects.</p></li>
+<li><p><strong>outliers</strong> (<em>bool</em><em>, </em><em>optional</em>) – Include outliers to calculate the box range. Defaults to False.</p></li>
+<li><p><strong>scale</strong> (<em>float</em><em>, </em><em>optional</em>) – matplotlib param to control the size of the plot. Defaults to 1.5.</p></li>
+<li><p><strong>tick_size</strong> (<em>int</em><em>, </em><em>optional</em>) – matplotlib param to control the size of the axis labels. Defaults to 12.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>matplotlib.pyplot.figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.measurements_visualizer.MeasurementsVisualizer.show_measurements_violinplot">
+<span class="sig-name descname"><span class="pre">show_measurements_violinplot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outliers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partial_ranker.measurements_visualizer.MeasurementsVisualizer.show_measurements_violinplot" title="Link to this definition"></a></dt>
+<dd><p>Displays a graph with a violinplot of measurements for each object in obj_list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj_list</strong> (<em>List</em><em>, </em><em>optional</em>) – The violinplots are shown only for the those objects in the list. The violinplots are arranged according to the order of the objects in the list. Defaults to a random order of all objects.</p></li>
+<li><p><strong>outliers</strong> (<em>bool</em><em>, </em><em>optional</em>) – Include outliers to calculate the box range. Defaults to False.</p></li>
+<li><p><strong>scale</strong> (<em>float</em><em>, </em><em>optional</em>) – matplotlib param to control the size of the plot. Defaults to 1.5.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>matplotlib.pyplot.figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-partial_ranker.partial_ranker_dfg">
+<span id="partial-ranker-partial-ranker-dfg-module"></span><h2>partial_ranker.partial_ranker_dfg module<a class="headerlink" href="#module-partial_ranker.partial_ranker_dfg" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_dfg.PartialRankerDFG">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partial_ranker.partial_ranker_dfg.</span></span><span class="sig-name descname"><span class="pre">PartialRankerDFG</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">comparer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partial_ranker.partial_ranker_dfg.PartialRankerDFG" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>DFG based partial ranking methodology (Methodology 1 in the paper).
+The ranks of an object corresponds to the depth of the object in a dependency graph which indicates the better-than relations.
+The algorithm is implemented in the method <code class="docutils literal notranslate"><span class="pre">compute_ranks()</span></code>.</p>
+<dl class="simple">
+<dt>Input:</dt><dd><dl class="simple">
+<dt>comparer (partial_ranker.QuantileComparer):</dt><dd><p>The <code class="docutils literal notranslate"><span class="pre">QuantileComparer</span></code> object that contains the results of pair-wise comparisons.
+i.e, <code class="docutils literal notranslate"><span class="pre">comparer.compare()</span></code> should have been called.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p><strong>Attributes and Methods</strong>:</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_dfg.PartialRankerDFG.dependencies">
+<span class="sig-name descname"><span class="pre">dependencies</span></span><a class="headerlink" href="#partial_ranker.partial_ranker_dfg.PartialRankerDFG.dependencies" title="Link to this definition"></a></dt>
+<dd><p>A dictionary with objects as keys, whose value holds the list of objects that are better than the object indicated in the key. If <code class="docutils literal notranslate"><span class="pre">obj_i</span></code> is better than <code class="docutils literal notranslate"><span class="pre">obj_j</span></code>, then the value of <code class="docutils literal notranslate"><span class="pre">obj_j</span></code> in the dictionary is a list containing <code class="docutils literal notranslate"><span class="pre">obj_i</span></code>.</p>
+<ul class="simple">
+<li><p>e.g.; in the dict <code class="docutils literal notranslate"><span class="pre">{'obj1':</span> <span class="pre">['obj2',</span> <span class="pre">'obj3],</span> <span class="pre">'obj2':</span> <span class="pre">['obj4'],</span> <span class="pre">...}</span></code>, <code class="docutils literal notranslate"><span class="pre">obj2</span></code> and <code class="docutils literal notranslate"><span class="pre">obj3</span></code> are better than <code class="docutils literal notranslate"><span class="pre">obj1</span></code>, <code class="docutils literal notranslate"><span class="pre">obj4</span></code> is better than <code class="docutils literal notranslate"><span class="pre">obj2</span></code>, etc.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[str,list[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_dfg.PartialRankerDFG.compute_ranks">
+<span class="sig-name descname"><span class="pre">compute_ranks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#partial_ranker.partial_ranker_dfg.PartialRankerDFG.compute_ranks" title="Link to this definition"></a></dt>
+<dd><p>Computes the partial ranks of the objects according to Methodology 1.
+The internal variables that stores the rank of the objects are updated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_dfg.PartialRankerDFG.get_dfg">
+<span class="sig-name descname"><span class="pre">get_dfg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#partial_ranker.partial_ranker_dfg.PartialRankerDFG.get_dfg" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A Graph object that represents the rank relation among the objects according to Methodology 1.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>partial_ranker.Graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_dfg.PartialRankerDFG.get_rank_obj">
+<span class="sig-name descname"><span class="pre">get_rank_obj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#partial_ranker.partial_ranker_dfg.PartialRankerDFG.get_rank_obj" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>obj</strong> (<em>str</em>) – Object name.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The partial rank of a given object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_dfg.PartialRankerDFG.get_ranks">
+<span class="sig-name descname"><span class="pre">get_ranks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#partial_ranker.partial_ranker_dfg.PartialRankerDFG.get_ranks" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary consisting of the list of objects at each rank.
+e.g.; <code class="docutils literal notranslate"><span class="pre">{0:</span> <span class="pre">['obj1'],</span> <span class="pre">1:</span> <span class="pre">['obj2',</span> <span class="pre">'obj3'],</span> <span class="pre">...}</span></code>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[int,List[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-partial_ranker.partial_ranker_dfg_r">
+<span id="partial-ranker-partial-ranker-dfg-r-module"></span><h2>partial_ranker.partial_ranker_dfg_r module<a class="headerlink" href="#module-partial_ranker.partial_ranker_dfg_r" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partial_ranker.partial_ranker_dfg_r.</span></span><span class="sig-name descname"><span class="pre">PartialRankerDFGReduced</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">comparer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>DFG based partial ranking methodology (Methodology 2 in the paper).
+First, the partial ranking is computed using Methodology 1. Then, the dependency graph from Methodology 1 is used to identify an alternative partial ranking with fewer ranks.
+The algorithm is implemented in the method <code class="docutils literal notranslate"><span class="pre">compute_ranks()</span></code>.</p>
+<dl class="simple">
+<dt>Input:</dt><dd><dl class="simple">
+<dt>comparer (partial_ranker.QuantileComparer):</dt><dd><p>The <code class="docutils literal notranslate"><span class="pre">QuantileComparer</span></code> object that contains the results of pair-wise comparisons.
+i.e, <code class="docutils literal notranslate"><span class="pre">comparer.compare()</span></code> should have been called.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p><strong>Attributes and Methods</strong>:</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.objs">
+<span class="sig-name descname"><span class="pre">objs</span></span><a class="headerlink" href="#partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.objs" title="Link to this definition"></a></dt>
+<dd><p>List of object names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.pr_dfg">
+<span class="sig-name descname"><span class="pre">pr_dfg</span></span><a class="headerlink" href="#partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.pr_dfg" title="Link to this definition"></a></dt>
+<dd><p>The partial ranking object which computes a parial ranking according to Methodology 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>partial_ranker.PartialRankerDFG</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.graph_H">
+<span class="sig-name descname"><span class="pre">graph_H</span></span><a class="headerlink" href="#partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.graph_H" title="Link to this definition"></a></dt>
+<dd><p>The dependency graph that represents the rank relation among the objects according to Methodology 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>partial_ranker.Graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.compute_ranks">
+<span class="sig-name descname"><span class="pre">compute_ranks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.compute_ranks" title="Link to this definition"></a></dt>
+<dd><p>Computes the partial ranks of the objects according to Methodology 2.
+The internal variables that stores the rank of the objects are updated.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.get_dfg">
+<span class="sig-name descname"><span class="pre">get_dfg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.get_dfg" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A Graph object that represents the rank relation among the objects according to Methodology 2.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>partial_ranker.Graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.get_rank_obj">
+<span class="sig-name descname"><span class="pre">get_rank_obj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.get_rank_obj" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>obj</strong> (<em>str</em>) – Object name.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The partial rank of a given object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.get_ranks">
+<span class="sig-name descname"><span class="pre">get_ranks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#partial_ranker.partial_ranker_dfg_r.PartialRankerDFGReduced.get_ranks" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary consisting of the list of objects at each rank.
+e.g.; <code class="docutils literal notranslate"><span class="pre">{0:</span> <span class="pre">['obj1'],</span> <span class="pre">1:</span> <span class="pre">['obj2',</span> <span class="pre">'obj3'],</span> <span class="pre">...}</span></code>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[int,List[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-partial_ranker.partial_ranker_min">
+<span id="partial-ranker-partial-ranker-min-module"></span><h2>partial_ranker.partial_ranker_min module<a class="headerlink" href="#module-partial_ranker.partial_ranker_min" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_min.PartialRankerMin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partial_ranker.partial_ranker_min.</span></span><span class="sig-name descname"><span class="pre">PartialRankerMin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">comparer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partial_ranker.partial_ranker_min.PartialRankerMin" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Partial ranking methodology (Methodology 3 in the paper).
+First, the objects are grouped into mutually exclusive equivalence classes based on the results of pair-wise comparisons.
+Then, the equivalence classes are ranked according to increasing lower quantiles values of one of the objects each class.
+All the objects in an equivalence class are ranked equally.
+The algorithm is implemented in the method <code class="docutils literal notranslate"><span class="pre">compute_ranks()</span></code>.</p>
+<dl class="simple">
+<dt>Input:</dt><dd><dl class="simple">
+<dt>comparer (partial_ranker.QuantileComparer):</dt><dd><p>The <code class="docutils literal notranslate"><span class="pre">QuantileComparer</span></code> object that contains the results of pair-wise comparisons.
+i.e, <code class="docutils literal notranslate"><span class="pre">comparer.compare()</span></code> should have been called.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p><strong>Attributes and Methods</strong>:</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_min.PartialRankerMin.objs">
+<span class="sig-name descname"><span class="pre">objs</span></span><a class="headerlink" href="#partial_ranker.partial_ranker_min.PartialRankerMin.objs" title="Link to this definition"></a></dt>
+<dd><p>List of object names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_min.PartialRankerMin.equivalence">
+<span class="sig-name descname"><span class="pre">equivalence</span></span><a class="headerlink" href="#partial_ranker.partial_ranker_min.PartialRankerMin.equivalence" title="Link to this definition"></a></dt>
+<dd><p>A dictionary with objects as keys, whose value holds the list of objects that are equivalent to the object indicated in the key.</p>
+<ul class="simple">
+<li><p>e.g.; in the dict <code class="docutils literal notranslate"><span class="pre">{'obj1':</span> <span class="pre">['obj3',</span> <span class="pre">'obj4],</span> <span class="pre">'obj2':</span> <span class="pre">['obj5'],</span> <span class="pre">...}</span></code>, <code class="docutils literal notranslate"><span class="pre">obj3</span></code> and <code class="docutils literal notranslate"><span class="pre">obj4</span></code> are equivalent to <code class="docutils literal notranslate"><span class="pre">obj1</span></code>, <code class="docutils literal notranslate"><span class="pre">obj5</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">obj2</span></code>, etc.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[str,list[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_min.PartialRankerMin.compute_ranks">
+<span class="sig-name descname"><span class="pre">compute_ranks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#partial_ranker.partial_ranker_min.PartialRankerMin.compute_ranks" title="Link to this definition"></a></dt>
+<dd><p>Computes the partial ranks of the objects according to Methodology 3.
+The internal variables that stores the rank of the objects are updated.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_min.PartialRankerMin.get_dfg">
+<span class="sig-name descname"><span class="pre">get_dfg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#partial_ranker.partial_ranker_min.PartialRankerMin.get_dfg" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A Graph object that represents the rank relation among the objects according to Methodology 3.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>partial_ranker.Graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_min.PartialRankerMin.get_rank_obj">
+<span class="sig-name descname"><span class="pre">get_rank_obj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#partial_ranker.partial_ranker_min.PartialRankerMin.get_rank_obj" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>obj</strong> (<em>str</em>) – Object name.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The partial rank of a given object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_min.PartialRankerMin.get_ranks">
+<span class="sig-name descname"><span class="pre">get_ranks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#partial_ranker.partial_ranker_min.PartialRankerMin.get_ranks" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary consisting of the list of objects at each rank.
+e.g.; <code class="docutils literal notranslate"><span class="pre">{0:</span> <span class="pre">['obj1'],</span> <span class="pre">1:</span> <span class="pre">['obj2',</span> <span class="pre">'obj3'],</span> <span class="pre">...}</span></code>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[int,List[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-partial_ranker.partial_ranker_wrapper">
+<span id="partial-ranker-partial-ranker-wrapper-module"></span><h2>partial_ranker.partial_ranker_wrapper module<a class="headerlink" href="#module-partial_ranker.partial_ranker_wrapper" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_wrapper.Method">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partial_ranker.partial_ranker_wrapper.</span></span><span class="sig-name descname"><span class="pre">Method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partial_ranker.partial_ranker_wrapper.Method" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>An Enum class to specify the method to compute the partial ranks.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_wrapper.Method.DFG">
+<span class="sig-name descname"><span class="pre">DFG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#partial_ranker.partial_ranker_wrapper.Method.DFG" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_wrapper.Method.DFGReduced">
+<span class="sig-name descname"><span class="pre">DFGReduced</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#partial_ranker.partial_ranker_wrapper.Method.DFGReduced" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_wrapper.Method.Min">
+<span class="sig-name descname"><span class="pre">Min</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#partial_ranker.partial_ranker_wrapper.Method.Min" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_wrapper.PartialRanker">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partial_ranker.partial_ranker_wrapper.</span></span><span class="sig-name descname"><span class="pre">PartialRanker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">comparer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partial_ranker.partial_ranker_wrapper.Method" title="partial_ranker.partial_ranker_wrapper.Method"><span class="pre">Method</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Method.DFGReduced</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partial_ranker.partial_ranker_wrapper.PartialRanker" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A general class to compute the partial ranks of objects based on the results of pair-wise comparisons.</p>
+<dl class="simple">
+<dt>Input:</dt><dd><dl class="simple">
+<dt>comparer (partial_ranker.QuantileComparer):</dt><dd><p>The <code class="docutils literal notranslate"><span class="pre">QuantileComparer</span></code> object that contains the results of pair-wise comparisons.
+i.e, <code class="docutils literal notranslate"><span class="pre">comparer.compare()</span></code> should have been called.</p>
+</dd>
+<dt>method (Method):</dt><dd><p>The method to compute the partial ranks. The default is <cite>Method.DFGReduced</cite>.</p>
+<ul class="simple">
+<li><p><cite>Method.DFG</cite>: The methodology implemenmted in <code class="docutils literal notranslate"><span class="pre">partial_ranker.PartialRankerDFG</span></code> is used.</p></li>
+<li><p><cite>Method.DFGReduced</cite>: The methodology implemenmted in <code class="docutils literal notranslate"><span class="pre">partial_ranker.PartialRankerDFGReduced</span></code> is used.</p></li>
+<li><p><cite>Method.Min</cite>: The methodology implemenmted in <code class="docutils literal notranslate"><span class="pre">partial_ranker.PartialRankerMin</span></code> is used.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<p><strong>Attributes and Methods</strong>:</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_wrapper.PartialRanker.ranker">
+<span class="sig-name descname"><span class="pre">ranker</span></span><a class="headerlink" href="#partial_ranker.partial_ranker_wrapper.PartialRanker.ranker" title="Link to this definition"></a></dt>
+<dd><p>The instance of the partial ranking methodology class used to compute the partial ranks.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_wrapper.PartialRanker.compute_ranks">
+<span class="sig-name descname"><span class="pre">compute_ranks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partial_ranker.partial_ranker_wrapper.Method" title="partial_ranker.partial_ranker_wrapper.Method"><span class="pre">Method</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Method.DFGReduced</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#partial_ranker.partial_ranker_wrapper.PartialRanker.compute_ranks" title="Link to this definition"></a></dt>
+<dd><p>Computes the partial ranks of objects.
+The attribute <cite>ranker</cite> is set to the instance of the partial ranking methodology class used to compute the partial ranks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>method</strong> (<a class="reference internal" href="#partial_ranker.partial_ranker_wrapper.Method" title="partial_ranker.partial_ranker_wrapper.Method"><em>Method</em></a><em>, </em><em>optional</em>) – The method to compute the partial ranks. Defaults to Method.DFGReduced.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_wrapper.PartialRanker.get_dfg">
+<span class="sig-name descname"><span class="pre">get_dfg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#partial_ranker.partial_ranker_wrapper.PartialRanker.get_dfg" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A Graph object that represents the rank relation among the objects.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>partial_ranker.Graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_wrapper.PartialRanker.get_rank_obj">
+<span class="sig-name descname"><span class="pre">get_rank_obj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#partial_ranker.partial_ranker_wrapper.PartialRanker.get_rank_obj" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>obj</strong> (<em>str</em>) – Object name.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The partial rank of a given object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_wrapper.PartialRanker.get_ranks">
+<span class="sig-name descname"><span class="pre">get_ranks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#partial_ranker.partial_ranker_wrapper.PartialRanker.get_ranks" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary consisting of the list of objects at each rank.
+e.g.; <code class="docutils literal notranslate"><span class="pre">{0:</span> <span class="pre">['obj1'],</span> <span class="pre">1:</span> <span class="pre">['obj2',</span> <span class="pre">'obj3'],</span> <span class="pre">...}</span></code>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[int,List[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.partial_ranker_wrapper.PartialRanker.get_separable_arrangement">
+<span class="sig-name descname"><span class="pre">get_separable_arrangement</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#partial_ranker.partial_ranker_wrapper.PartialRanker.get_separable_arrangement" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Arrangement of the objects according to <code class="docutils literal notranslate"><span class="pre">PartialRankerDFG.get_dfg().get_separable_arrangement()</span></code>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-partial_ranker.quantile_comparer">
+<span id="partial-ranker-quantile-comparer-module"></span><h2>partial_ranker.quantile_comparer module<a class="headerlink" href="#module-partial_ranker.quantile_comparer" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="partial_ranker.quantile_comparer.QuantileComparer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partial_ranker.quantile_comparer.</span></span><span class="sig-name descname"><span class="pre">QuantileComparer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">measurements</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partial_ranker.quantile_comparer.QuantileComparer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Given a dictionary of objects consisting of a list of measurement values, e.g., <code class="docutils literal notranslate"><span class="pre">{'obj1':</span> <span class="pre">[1.2,</span> <span class="pre">1.3,</span> <span class="pre">1.4],</span> <span class="pre">'obj2':</span> <span class="pre">[1.5,</span> <span class="pre">1.6,</span> <span class="pre">1.7,0.9],</span> <span class="pre">...}</span></code>, this class
+provides methods to compare objects pairwise using a quantile-based better than relation, and to store the results
+of the comparisons in a comparison matrix.</p>
+<dl class="simple">
+<dt>Input:</dt><dd><p><strong>measurements (dict[str, List[float]])</strong>: A dictionary of objects consisting of a list of measurement values.</p>
+</dd>
+</dl>
+<p><strong>Attributes and Methods</strong>:</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partial_ranker.quantile_comparer.QuantileComparer.C">
+<span class="sig-name descname"><span class="pre">C</span></span><a class="headerlink" href="#partial_ranker.quantile_comparer.QuantileComparer.C" title="Link to this definition"></a></dt>
+<dd><p>A square matrix of size (N x N), where N is the number of objects.
+This matrix should holds the results of pair-wise comparisons as follows:</p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">obj_i</span></code> is better than <code class="docutils literal notranslate"><span class="pre">obj_j</span></code>, then <code class="docutils literal notranslate"><span class="pre">C[obj_i][obj_j]</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">obj_i</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">obj_j</span></code>, then <code class="docutils literal notranslate"><span class="pre">C[obj_i][obj_j]</span> <span class="pre">=</span> <span class="pre">1</span></code>.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">obj_i</span></code> is worse than <code class="docutils literal notranslate"><span class="pre">obj_j</span></code>, then <code class="docutils literal notranslate"><span class="pre">C[obj_i][obj_j]</span> <span class="pre">=</span> <span class="pre">2</span></code>.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[str, dict[str, int]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partial_ranker.quantile_comparer.QuantileComparer.objs">
+<span class="sig-name descname"><span class="pre">objs</span></span><a class="headerlink" href="#partial_ranker.quantile_comparer.QuantileComparer.objs" title="Link to this definition"></a></dt>
+<dd><p>A list of object keys in the measurements dictionary.</p>
+<ul class="simple">
+<li><p>e.g., <code class="docutils literal notranslate"><span class="pre">['obj1',</span> <span class="pre">'obj2',</span> <span class="pre">...]</span></code>.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partial_ranker.quantile_comparer.QuantileComparer.t_up">
+<span class="sig-name descname"><span class="pre">t_up</span></span><a class="headerlink" href="#partial_ranker.quantile_comparer.QuantileComparer.t_up" title="Link to this definition"></a></dt>
+<dd><p>A dictionary to store the upper quantile values of the measurements for each object.</p>
+<ul class="simple">
+<li><p>e.g., <code class="docutils literal notranslate"><span class="pre">{'obj1':</span> <span class="pre">1.5,</span> <span class="pre">'obj2':</span> <span class="pre">1.6,</span> <span class="pre">...}</span></code>.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[str, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partial_ranker.quantile_comparer.QuantileComparer.t_low">
+<span class="sig-name descname"><span class="pre">t_low</span></span><a class="headerlink" href="#partial_ranker.quantile_comparer.QuantileComparer.t_low" title="Link to this definition"></a></dt>
+<dd><p>A dictionary to store the lower quantile values of the measurements for each object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[str, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.quantile_comparer.QuantileComparer.better_than_relation">
+<span class="sig-name descname"><span class="pre">better_than_relation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#partial_ranker.quantile_comparer.QuantileComparer.better_than_relation" title="Link to this definition"></a></dt>
+<dd><p>The better than relation to compare two objects based on the quantile vales of their measurements.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>obj1</strong> is better than <strong>obj2</strong> if the upper quantile value of <strong>obj1</strong> is less than the lower quantile value of <strong>obj2</strong>.</p></li>
+<li><p><strong>obj1</strong> is worse than <strong>obj2</strong> if the upper quantile value of <strong>obj2</strong> is less than the lower quantile value of <strong>obj1</strong>.</p></li>
+<li><p><strong>obj1</strong> is equivalent to <strong>obj2</strong> if neither of the above conditions are satisfied.</p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj1</strong> (<em>str</em>) – the key of an object in the measurements dictionary.</p></li>
+<li><p><strong>obj2</strong> (<em>str</em>) – the key of another object in the measurements dictionary.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>If <strong>obj1</strong> is better than <strong>obj2</strong>, returns 0</p></li>
+<li><p>If <strong>obj1</strong> is equivalent to <strong>obj2</strong>, returns 1</p></li>
+<li><p>If <strong>obj1</strong> is worse than <strong>obj2</strong>, returns 2</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.quantile_comparer.QuantileComparer.compare">
+<span class="sig-name descname"><span class="pre">compare</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#partial_ranker.quantile_comparer.QuantileComparer.compare" title="Link to this definition"></a></dt>
+<dd><p>Performs a pair-wise comparison of all objects in the measurements dictionary and stores the results in <strong>C</strong>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.quantile_comparer.QuantileComparer.compute_quantiles">
+<span class="sig-name descname"><span class="pre">compute_quantiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q_min</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outliers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#partial_ranker.quantile_comparer.QuantileComparer.compute_quantiles" title="Link to this definition"></a></dt>
+<dd><p>For a given quantile range, the upper and lower quantile values of measurements are computed and stored in the <strong>t_up</strong> and <strong>t_low</strong> dictionaries.
+The elements of the comparison matrix <strong>C</strong> is initialized to -1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>q_max</strong> (<em>int</em>) – Upper quantile. E.g., 75 for 75th percentile.</p></li>
+<li><p><strong>q_min</strong> (<em>int</em>) – Lower quantile. E.g., 25 for 25th percentile.</p></li>
+<li><p><strong>outliers</strong> (<em>bool</em><em>, </em><em>optional</em>) – Remove outliers using the 1.5 IQR rule. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partial_ranker.quantile_comparer.QuantileComparer.get_comparison_matrix">
+<span class="sig-name descname"><span class="pre">get_comparison_matrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#partial_ranker.quantile_comparer.QuantileComparer.get_comparison_matrix" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The comparison matrix <strong>C</strong>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[str, dict[str, int]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-partial_ranker">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-partial_ranker" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../notebooks-applications/07A_RootCause_BPI.html" class="btn btn-neutral float-left" title="Applications in Root Cause Analysis : BPI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Aravind Sankaran.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>
