@@ -1,6 +1,6 @@
 # Partial Ranker
 
-Partial Ranker is a library that implements methodologies for ranking a given set of objects that have a *strict partial order* relation. The Full documentations can be found [here](https://hpac.github.io/PartialRanker/).
+Partial Ranker is a library that implements methodologies for ranking a given set of objects that have a *strict partial order* relation. The full documentations can be found [here](https://hpac.github.io/PartialRanker/).
 
 **Input**:
 
