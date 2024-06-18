@@ -54,4 +54,4 @@ More details on partial ranking, the methodologies and applications can be found
 
 ## Acknowledgement
 
-Financial support from the Deutsche Forschungsgemeinschaft (German Research Foundation) through grants GSC 111 and IRTG 2379 is gratefully acknowledged.
+Financial support from the Deutsche Forschungsgemeinschaft (German Research Foundation) through the grant IRTG 2379 is gratefully acknowledged.
