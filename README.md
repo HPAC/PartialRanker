@@ -1,5 +1,7 @@
 # Partial Ranker
 
+**Version: 1.0**
+
 Partial Ranker is a library that implements methodologies for ranking a given set of objects that have a *strict partial order* relation. The full documentation can be found [here](https://hpac.github.io/PartialRanker/).
 
 **Input**:
