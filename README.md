@@ -36,7 +36,7 @@ pip install git+https://github.com/HPAC/PartialRanker
 
 Details on the usage and application examples can be found [here](https://hpac.github.io/PartialRanker/notebooks-usage/01U_Usage.html). For a hands-on experience, please follow the jupyter notebooks under the folder ``examples/``.
 
-## Reference
+## Cite
 
 More details on partial ranking, the methodologies and applications can be found in [this paper](https://arxiv.org/abs/2405.18259). If you are using this library, please cite:
 
