@@ -1,5 +1,8 @@
 # Partial Ranker
 
+**Latest: v1.0.0** 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.12082779.svg)](https://doi.org/10.5281/zenodo.12082779)
+
 Partial Ranker is a library that implements methodologies for ranking a given set of objects that have a *strict partial order* relation. The full documentation can be found [here](https://hpac.github.io/PartialRanker/).
 
 **Input**:
