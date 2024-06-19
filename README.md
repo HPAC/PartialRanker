@@ -1,5 +1,6 @@
 # Partial Ranker
 
+
 **Latest: v1.0.0** 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.12082779.svg)](https://doi.org/10.5281/zenodo.12082779)
 
@@ -55,3 +56,4 @@ More details on partial ranking, the methodologies and applications can be found
 ## Acknowledgement
 
 Financial support from the Deutsche Forschungsgemeinschaft (German Research Foundation) through the grant IRTG 2379 is gratefully acknowledged.
+
