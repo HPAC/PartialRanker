@@ -136,7 +136,7 @@ class MeasurementsVisualizer:
 
         # # Creating axes instance
         bp = ax.boxplot(x, patch_artist=True,
-                        notch=False, vert=0, showfliers=outliers,
+                        notch=False, vert=False, showfliers=outliers,
                         positions=range(len(y)),zorder=0)
 
         x_lim = ax.get_xlim()
@@ -215,7 +215,7 @@ class MeasurementsVisualizer:
         # print(x)
 
         bp = ax.boxplot(x_b, patch_artist=True,
-                        notch=False, vert=0, showfliers=outliers,
+                        notch=False, vert=False, showfliers=outliers,
                         positions=range(len(y)))
 
         # # Creating axes instance
