@@ -108,7 +108,7 @@ class MeasurementsVisualizer:
         plt.subplots_adjust(hspace=hspace)
         plt.show()
 
-    def show_measurements_boxplots(self, obj_list=None, outliers=False, scale=1.5, tick_size=12):
+    def show_measurements_boxplots(self, obj_list=None, outliers=False, scale=1.5, tick_size=12, unit='time (s)'):
         """Displays a graph with a boxplot of measurements for each object in obj_list. The box represents the Inter Quartile Interval (IQI), 
         which is the interval between the 25th and the 75th quantile values, and the red line within the box represents the median value.
 
@@ -117,6 +117,7 @@ class MeasurementsVisualizer:
             outliers (bool, optional): Include outliers to calculate the box range. Defaults to False.
             scale (float, optional): matplotlib param to control the size of the plot. Defaults to 1.5.
             tick_size (int, optional): matplotlib param to control the size of the axis labels. Defaults to 12.
+            unit (str, optional): The unit of the measurement values. Defaults to 'time (s)'.
 
         Returns:
             matplotlib.pyplot.figure
@@ -181,7 +182,7 @@ class MeasurementsVisualizer:
         ax.get_yaxis().tick_left()
         ax.xaxis.set_tick_params(labelsize=tick_size)
         ax.yaxis.set_tick_params(labelsize=tick_size)
-        ax.set_xlabel('time (s)', fontsize = tick_size)
+        ax.set_xlabel(unit, fontsize = tick_size)
 
         #plt.show()
         return fig
@@ -265,6 +266,3 @@ class MeasurementsVisualizer:
 
         #plt.show()
         return fig
-
-
-
