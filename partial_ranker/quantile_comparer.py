@@ -88,7 +88,7 @@ class QuantileComparer:
         iqr = q2 - q1
         fence_low = q1 - 1.5 * iqr
         fence_high = q2 + 1.5 * iqr
-        return x[(x > fence_low) & (x < fence_high)]
+        return x[(x >= fence_low) & (x <= fence_high)]
     
     def better_than_relation(self, obj1:str, obj2:str) -> int:
         """The better than relation to compare two objects based on the quantile vales of their measurements.
