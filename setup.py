@@ -5,7 +5,7 @@ with open("README.md", "r") as f:
 
 setup(
     name='partial_ranker',
-    version="1.0.0",
+    version="1.1.0",
     description="Partial Ranker is a python library that implements methodologies for ranking a given set of objects that have a strict partial order relation.",
     long_description=long_description,
     long_description_content_type="text/markdown",
