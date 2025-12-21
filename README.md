@@ -42,16 +42,7 @@ Details on the usage and application examples can be found [here](https://hpac.g
 
 ## Cite
 
-More details on partial ranking, the methodologies and applications can be found in [this paper](https://arxiv.org/abs/2405.18259). If you are using this library, please cite:
-
-```
-@article{sankaran2024ranking,
-  title={Ranking with Ties based on Noisy Performance Data},
-  author={Sankaran, Aravind and Karlsson, Lars and Bientinesi, Paolo},
-  journal={arXiv preprint arXiv:2405.18259},
-  year={2024}
-}
-```
+More details on partial ranking, the methodologies and applications can be found in [this paper](https://link.springer.com/article/10.1007/s41060-025-00722-1). 
 
 ## Acknowledgement
 
